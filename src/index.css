@@ -1,0 +1,83 @@
+/* ========================================
+   歴史検定アプリ - デザイントークン
+   ======================================== */
+
+:root {
+  --color-primary: #6B9FD4;
+  --color-secondary: #F4A460;
+  --color-accent: #8FBC8F;
+  --color-highlight: #DDA0DD;
+  --color-warning: #FF8FAB;
+  --color-bg: #FFFFFF;
+  --color-text: #3D3D3D;
+  --color-text-light: #6B7280;
+  --color-card-bg: #F8F9FD;
+  --color-border: #D0DFF0;
+
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-full: 9999px;
+
+  --shadow-sm: 0 2px 8px rgba(107, 159, 212, 0.15);
+  --shadow-md: 0 4px 16px rgba(107, 159, 212, 0.2);
+  --shadow-lg: 0 8px 24px rgba(107, 159, 212, 0.25);
+
+  --font-family: 'Noto Sans JP', sans-serif;
+
+  --transition: 0.2s ease;
+  --transition-slow: 0.35s ease;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #root {
+  height: 100%;
+  font-family: var(--font-family);
+  background: var(--color-bg);
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* スクロールバー */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: var(--radius-full);
+}
+
+/* アニメーション */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-8px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.fade-in {
+  animation: fadeIn var(--transition-slow) both;
+}
+.slide-in {
+  animation: slideIn var(--transition-slow) both;
+}
+.scale-in {
+  animation: scaleIn var(--transition-slow) both;
+}
