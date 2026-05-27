@@ -6,7 +6,7 @@
 フェーズ2:  日本史データ（古代〜中世） [✅]
 フェーズ3:  日本史データ（近世〜現代） [✅]
 フェーズ4:  世界史・テーマ史データ    [✅]
-フェーズ5:  共通コンポーネント        [ ]
+フェーズ5:  共通コンポーネント        [✅]
 フェーズ6:  ホーム画面               [ ]
 フェーズ7:  ①基礎知識タブ            [ ]
 フェーズ8:  ②日本史タブ 前半         [ ]
@@ -19,14 +19,17 @@
 フェーズ15: 仕上げ・模擬試験・結合    [ ]
 ========================================
 
-📍 CHECKPOINT: フェーズ4 完了
+📍 CHECKPOINT: フェーズ5 完了
 実装済み: グローバル状態・デザイントークン・タブ構造・ナビゲーション
          src/data/nihonshiData.js: 旧石器〜室町（10時代）・理解度テスト22問
          src/data/nihonshiDataLate.js: 戦国〜現代（7時代）・人物データ19名・理解度テスト15問
          src/data/sekaishiData.js: 世界史8地域×時代・地域マトリクス・各種テスト問題
          src/data/temashiData.js: テーマ史6分野（文化・宗教・経済・外交・社会・科学）
          src/data/ronshutsuData.js: 論述ガイド・模範解答7題（日本史4題・世界史3題）
-次フェーズ: フェーズ5「共通コンポーネント」
+         src/components/QuizComponent.jsx: 四択・年代順・記述式・結果画面
+         src/components/TabNav.jsx: タブ間ナビゲーションバー
+         src/components/Cards.jsx: SectionCard・KeywordList・EventTimeline・TipCard・FigureCard・EraCard他
+次フェーズ: フェーズ6「ホーム画面（完成版）」
 */
 
 import { useState, useEffect, useCallback } from "react";
