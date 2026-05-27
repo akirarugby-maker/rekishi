@@ -7,7 +7,7 @@
 フェーズ3:  日本史データ（近世〜現代） [✅]
 フェーズ4:  世界史・テーマ史データ    [✅]
 フェーズ5:  共通コンポーネント        [✅]
-フェーズ6:  ホーム画面               [ ]
+フェーズ6:  ホーム画面               [✅]
 フェーズ7:  ①基礎知識タブ            [ ]
 フェーズ8:  ②日本史タブ 前半         [ ]
 フェーズ9:  ②日本史タブ 後半         [ ]
@@ -19,7 +19,7 @@
 フェーズ15: 仕上げ・模擬試験・結合    [ ]
 ========================================
 
-📍 CHECKPOINT: フェーズ5 完了
+📍 CHECKPOINT: フェーズ6 完了
 実装済み: グローバル状態・デザイントークン・タブ構造・ナビゲーション
          src/data/nihonshiData.js: 旧石器〜室町（10時代）・理解度テスト22問
          src/data/nihonshiDataLate.js: 戦国〜現代（7時代）・人物データ19名・理解度テスト15問
@@ -29,16 +29,17 @@
          src/components/QuizComponent.jsx: 四択・年代順・記述式・結果画面
          src/components/TabNav.jsx: タブ間ナビゲーションバー
          src/components/Cards.jsx: SectionCard・KeywordList・EventTimeline・TipCard・FigureCard・EraCard他
-次フェーズ: フェーズ6「ホーム画面（完成版）」
+         src/tabs/HomeTab.jsx: 全タブ横断検索・試験概要・カウントダウン・進捗チェックリスト・リセット確認
+次フェーズ: フェーズ7「①基礎知識タブ」
 */
 
 import { useState, useEffect, useCallback } from "react";
 import {
-  Search, BookOpen, Clock, BarChart2, Home,
-  Globe, Calendar, ChevronRight, ChevronLeft,
-  Check, RefreshCw, Brain, Award, TrendingUp,
-  Filter, Scroll, Sword, Crown, Building, Map
+  BookOpen, BarChart2, Home,
+  Globe, ChevronLeft,
+  Brain, Scroll, Crown,
 } from "lucide-react";
+import HomeTab from "./tabs/HomeTab.jsx";
 
 // ============================================================
 // 定数
@@ -118,16 +119,6 @@ function saveData(data) {
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
   } catch {}
-}
-
-// ============================================================
-// 進捗計算ユーティリティ
-// ============================================================
-
-function calcTotalProgress(progress) {
-  const allValues = Object.values(progress).flatMap(section => Object.values(section));
-  const done = allValues.filter(Boolean).length;
-  return { done, total: allValues.length, pct: Math.round((done / allValues.length) * 100) };
 }
 
 // ============================================================
@@ -270,187 +261,6 @@ function PlaceholderTab({ tab, phaseNum }) {
           フェーズ {phaseNum} で実装予定
           <br />
           現在はフェーズ1（基盤構築）完了済みです。
-        </div>
-      </div>
-    </div>
-  );
-}
-
-// ============================================================
-// ホーム画面（簡易版 / フェーズ6で完成）
-// ============================================================
-
-function HomeTab({ appData, onUpdateData, onNavigate }) {
-  const { done, total, pct } = calcTotalProgress(appData.progress);
-
-  const getDaysLeft = (dateStr) => {
-    if (!dateStr) return null;
-    return Math.ceil((new Date(dateStr) - new Date()) / 86400000);
-  };
-
-  const countdownColor = (days) => {
-    if (days === null) return "var(--color-primary)";
-    if (days <= 7)  return "var(--color-warning)";
-    if (days <= 30) return "var(--color-secondary)";
-    return "var(--color-primary)";
-  };
-
-  const daysLeft = getDaysLeft(appData.examDate);
-
-  return (
-    <div className="fade-in">
-      {/* ウェルカムカード */}
-      <div style={{ ...S.card, background: "linear-gradient(135deg, #EEF4FB 0%, #FDF6EE 100%)", marginBottom: 14 }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 6 }}>
-          <Scroll size={22} color="var(--color-primary)" />
-          <span style={{ fontSize: 16, fontWeight: 700 }}>歴史検定 勉強アプリ</span>
-        </div>
-        <div style={{ fontSize: 12, color: "var(--color-text-light)", lineHeight: 1.7 }}>
-          歴史能力検定 準1級・1級（日本史・世界史）に対応した学習アプリです。
-        </div>
-      </div>
-
-      {/* 試験概要 */}
-      <div style={S.card}>
-        <div style={S.cardTitle}>
-          <Award size={16} color="var(--color-secondary)" />
-          歴史検定 試験概要
-        </div>
-        <table style={{ width: "100%", fontSize: 12, lineHeight: 1.9, borderCollapse: "collapse" }}>
-          <tbody>
-            {[
-              ["主催",       "歴史能力検定協会"],
-              ["試験回数",   "年1回（11月）"],
-              ["合格ライン", "60%以上"],
-              ["準1級",      "四択40問＋記述10問 / 50分"],
-              ["1級",        "四択25問＋記述10問＋論述1問 / 50分"],
-              ["準1級レベル","高校卒業程度・合格率15〜20%"],
-              ["1級レベル",  "大学専門課程・合格率5〜10%"],
-            ].map(([k, v]) => (
-              <tr key={k} style={{ borderBottom: "1px solid var(--color-border)" }}>
-                <td style={{ color: "var(--color-text-light)", paddingRight: 8, paddingBottom: 2, paddingTop: 2, width: "40%", verticalAlign: "top" }}>{k}</td>
-                <td style={{ fontWeight: 500, paddingBottom: 2, paddingTop: 2 }}>{v}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-
-      {/* 受験日 & カウントダウン */}
-      <div style={S.card}>
-        <div style={S.cardTitle}>
-          <Calendar size={16} color="var(--color-accent)" />
-          受験日設定・カウントダウン
-        </div>
-        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-          <input
-            type="date"
-            value={appData.examDate}
-            onChange={e => onUpdateData({ examDate: e.target.value })}
-            style={{
-              flex: 1,
-              padding: "8px 12px",
-              borderRadius: 8,
-              border: "1px solid var(--color-border)",
-              fontSize: 14,
-              fontFamily: "var(--font-family)",
-              outline: "none",
-            }}
-          />
-          {daysLeft !== null && (
-            <div style={{
-              padding: "8px 14px",
-              borderRadius: 8,
-              background: countdownColor(daysLeft) + "1A",
-              color: countdownColor(daysLeft),
-              fontWeight: 700,
-              fontSize: 14,
-              whiteSpace: "nowrap",
-            }}>
-              残り {daysLeft} 日
-            </div>
-          )}
-        </div>
-      </div>
-
-      {/* 学習進捗 */}
-      <div style={S.card}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
-          <div style={S.cardTitle}>
-            <TrendingUp size={16} color="var(--color-highlight)" />
-            学習進捗
-          </div>
-          <span style={S.badge("var(--color-primary)")}>{pct}% 完了</span>
-        </div>
-        <div style={{ fontSize: 12, color: "var(--color-text-light)", marginBottom: 4 }}>
-          {done} / {total} セクション完了
-        </div>
-        <div style={S.progressBarWrap}>
-          <div style={S.progressFill(pct, "var(--color-primary)")} />
-        </div>
-
-        <div style={{ marginTop: 14, display: "flex", flexDirection: "column", gap: 8 }}>
-          {[
-            { label: "基礎知識", key: "kisochishiki", color: "var(--color-secondary)" },
-            { label: "日本史",   key: "nihonshi",     color: "var(--color-accent)" },
-            { label: "世界史",   key: "sekaishi",     color: "var(--color-highlight)" },
-            { label: "テーマ史", key: "temashi",      color: "var(--color-warning)" },
-            { label: "論述対策", key: "ronshutsu",    color: "#A0C4FF" },
-          ].map(({ label, key, color }) => {
-            const vals = Object.values(appData.progress[key]);
-            const sd = vals.filter(Boolean).length;
-            const st = vals.length;
-            const sp = st ? Math.round((sd / st) * 100) : 0;
-            return (
-              <div key={key}>
-                <div style={{ display: "flex", justifyContent: "space-between", fontSize: 12, marginBottom: 3 }}>
-                  <span style={{ color: "var(--color-text-light)" }}>{label}</span>
-                  <span style={{ fontWeight: 600, color }}>{sd}/{st}</span>
-                </div>
-                <div style={S.progressBarWrap}>
-                  <div style={S.progressFill(sp, color)} />
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-
-      {/* 学習メニュー */}
-      <div style={S.card}>
-        <div style={S.cardTitle}>学習メニュー</div>
-        <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-          {TABS.filter(t => t.id !== "home").map(tab => {
-            const Icon = tab.icon;
-            return (
-              <button
-                key={tab.id}
-                onClick={() => onNavigate(tab.id)}
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 12,
-                  padding: "12px 14px",
-                  borderRadius: 10,
-                  border: "1px solid var(--color-border)",
-                  background: tab.color + "12",
-                  cursor: "pointer",
-                  fontFamily: "var(--font-family)",
-                  fontSize: 14,
-                  fontWeight: 600,
-                  color: "var(--color-text)",
-                  textAlign: "left",
-                  transition: "background 0.2s",
-                }}
-                onMouseOver={e => e.currentTarget.style.background = tab.color + "22"}
-                onMouseOut={e => e.currentTarget.style.background = tab.color + "12"}
-              >
-                <Icon size={18} color={tab.color} />
-                <span style={{ flex: 1 }}>{tab.label}</span>
-                <ChevronRight size={16} color="var(--color-text-light)" />
-              </button>
-            );
-          })}
         </div>
       </div>
     </div>
