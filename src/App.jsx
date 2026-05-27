@@ -8,7 +8,7 @@
 フェーズ4:  世界史・テーマ史データ    [✅]
 フェーズ5:  共通コンポーネント        [✅]
 フェーズ6:  ホーム画面               [✅]
-フェーズ7:  ①基礎知識タブ            [ ]
+フェーズ7:  ①基礎知識タブ            [✅]
 フェーズ8:  ②日本史タブ 前半         [ ]
 フェーズ9:  ②日本史タブ 後半         [ ]
 フェーズ10: ③世界史タブ              [ ]
@@ -19,7 +19,7 @@
 フェーズ15: 仕上げ・模擬試験・結合    [ ]
 ========================================
 
-📍 CHECKPOINT: フェーズ6 完了
+📍 CHECKPOINT: フェーズ7 完了
 実装済み: グローバル状態・デザイントークン・タブ構造・ナビゲーション
          src/data/nihonshiData.js: 旧石器〜室町（10時代）・理解度テスト22問
          src/data/nihonshiDataLate.js: 戦国〜現代（7時代）・人物データ19名・理解度テスト15問
@@ -30,7 +30,8 @@
          src/components/TabNav.jsx: タブ間ナビゲーションバー
          src/components/Cards.jsx: SectionCard・KeywordList・EventTimeline・TipCard・FigureCard・EraCard他
          src/tabs/HomeTab.jsx: 全タブ横断検索・試験概要・カウントダウン・進捗チェックリスト・リセット確認
-次フェーズ: フェーズ7「①基礎知識タブ」
+         src/tabs/KisochishikiTab.jsx: セクションA〜D・横スクロールタイムライン・23問のテスト・進捗連動
+次フェーズ: フェーズ8「②日本史タブ 前半」
 */
 
 import { useState, useEffect, useCallback } from "react";
@@ -40,6 +41,7 @@ import {
   Brain, Scroll, Crown,
 } from "lucide-react";
 import HomeTab from "./tabs/HomeTab.jsx";
+import KisochishikiTab from "./tabs/KisochishikiTab.jsx";
 
 // ============================================================
 // 定数
@@ -299,7 +301,7 @@ export default function App() {
   const renderContent = () => {
     switch (activeTab) {
       case "home":        return <HomeTab appData={appData} onUpdateData={updateData} onNavigate={navigate} />;
-      case "kisochishiki":return <PlaceholderTab tab={TABS[1]} phaseNum={7} />;
+      case "kisochishiki":return <KisochishikiTab appData={appData} onUpdateData={updateData} onNavigate={navigate} />;
       case "nihonshi":    return <PlaceholderTab tab={TABS[2]} phaseNum={8} />;
       case "sekaishi":    return <PlaceholderTab tab={TABS[3]} phaseNum={10} />;
       case "temashi":     return <PlaceholderTab tab={TABS[4]} phaseNum={11} />;
