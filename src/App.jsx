@@ -16,10 +16,10 @@
 フェーズ12: ⑤論述対策タブ            [✅]
 フェーズ13: ⑥苦手分析タブ            [✅]
 フェーズ14: AI機能（モック）統合      [✅]
-フェーズ15: 仕上げ・模擬試験・結合    [ ]
+フェーズ15: 仕上げ・模擬試験・結合    [✅]
 ========================================
 
-📍 CHECKPOINT: フェーズ14 完了
+📍 CHECKPOINT: フェーズ15 完了（全フェーズ完成）
 実装済み: グローバル状態・デザイントークン・タブ構造・ナビゲーション
          src/data/nihonshiData.js: 旧石器〜室町（10時代）・理解度テスト22問
          src/data/nihonshiDataLate.js: 戦国〜現代（7時代）・人物データ19名・理解度テスト15問
@@ -38,7 +38,11 @@
          src/tabs/RonshutsuTab.jsx: 書き方ガイド・採点基準・模範解答7題・練習テーマ（カテゴリ別）
          src/tabs/NigateTab.jsx: レーダーチャート・棒グラフ・苦手ランキング・テスト履歴
          src/components/AIAdvisor.jsx: StudyPlanCard（ホーム）・AIChatSection（苦手分析）
-次フェーズ: フェーズ15「仕上げ・模擬試験・結合」
+         src/tabs/MockExamTab.jsx: 準1級/1級/練習モード・タイマー・全問見直し・結果分析
+         src/index.css: pulseアニメーション・フォーカスリング追加
+========================================
+🎉 全フェーズ実装完了！
+========================================
 */
 
 import { useState, useEffect, useCallback } from "react";
@@ -54,6 +58,7 @@ import SekaishiTab from "./tabs/SekaishiTab.jsx";
 import TemashiTab from "./tabs/TemashiTab.jsx";
 import RonshutsuTab from "./tabs/RonshutsuTab.jsx";
 import NigateTab from "./tabs/NigateTab.jsx";
+import MockExamTab from "./tabs/MockExamTab.jsx";
 
 // ============================================================
 // 定数
@@ -319,6 +324,7 @@ export default function App() {
       case "temashi":     return <TemashiTab appData={appData} onUpdateData={updateData} onNavigate={navigate} />;
       case "ronshutsu":   return <RonshutsuTab appData={appData} onUpdateData={updateData} onNavigate={navigate} />;
       case "nigate":      return <NigateTab appData={appData} onUpdateData={updateData} onNavigate={navigate} />;
+      case "mockexam":    return <MockExamTab appData={appData} onUpdateData={updateData} onNavigate={navigate} />;
       default:            return null;
     }
   };

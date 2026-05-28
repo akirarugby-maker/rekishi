@@ -81,3 +81,19 @@ html, body, #root {
 .scale-in {
   animation: scaleIn var(--transition-slow) both;
 }
+
+/* AIチャット ドットアニメーション */
+@keyframes pulse {
+  0%, 100% { opacity: 0.3; transform: scale(0.85); }
+  50%       { opacity: 1;   transform: scale(1); }
+}
+
+/* タブバー スクロールバー非表示 */
+nav::-webkit-scrollbar { display: none; }
+nav { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ボタンのフォーカスリング統一 */
+button:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}

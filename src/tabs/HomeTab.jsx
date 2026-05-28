@@ -557,6 +557,30 @@ export default function HomeTab({ appData, onUpdateData, onNavigate }) {
       {/* AIスタディプラン */}
       <StudyPlanCard appData={appData} onNavigate={onNavigate} />
 
+      {/* 模擬試験バナー */}
+      <button
+        onClick={() => onNavigate("mockexam")}
+        style={{
+          width: "100%", display: "flex", alignItems: "center", gap: 12,
+          padding: "14px 16px", borderRadius: 14, marginBottom: 12,
+          border: "1px solid var(--color-secondary)50",
+          background: "linear-gradient(135deg, var(--color-secondary)15, var(--color-secondary)05)",
+          cursor: "pointer", fontFamily: "var(--font-family)", textAlign: "left",
+          boxShadow: "var(--shadow-sm)",
+        }}
+      >
+        <Award size={24} color="var(--color-secondary)" style={{ flexShrink: 0 }} />
+        <div style={{ flex: 1 }}>
+          <div style={{ fontSize: 14, fontWeight: 700, color: "var(--color-text)", marginBottom: 2 }}>
+            模擬試験モード
+          </div>
+          <div style={{ fontSize: 11, color: "var(--color-text-light)" }}>
+            準1級・1級・練習 3モード／54問からランダム出題
+          </div>
+        </div>
+        <ChevronRight size={16} color="var(--color-secondary)" style={{ flexShrink: 0 }} />
+      </button>
+
       {/* 進捗表（チェックリスト） */}
       <div style={S.card}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
