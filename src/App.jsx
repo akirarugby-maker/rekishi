@@ -13,13 +13,13 @@
 フェーズ9:  ②日本史タブ 後半         [✅]
 フェーズ10: ③世界史タブ              [✅]
 フェーズ11: ④テーマ史タブ            [✅]
-フェーズ12: ⑤論述対策タブ            [ ]
+フェーズ12: ⑤論述対策タブ            [✅]
 フェーズ13: ⑥苦手分析タブ            [ ]
 フェーズ14: AI機能（モック）統合      [ ]
 フェーズ15: 仕上げ・模擬試験・結合    [ ]
 ========================================
 
-📍 CHECKPOINT: フェーズ11 完了
+📍 CHECKPOINT: フェーズ12 完了
 実装済み: グローバル状態・デザイントークン・タブ構造・ナビゲーション
          src/data/nihonshiData.js: 旧石器〜室町（10時代）・理解度テスト22問
          src/data/nihonshiDataLate.js: 戦国〜現代（7時代）・人物データ19名・理解度テスト15問
@@ -35,7 +35,8 @@
                                    人物図鑑（19名・時代フィルタ）・単語帳（フラッシュカード）・テスト履歴
          src/tabs/SekaishiTab.jsx: 8セクション地域別/時代順表示・詳細・理解度テスト・進捗連動
          src/tabs/TemashiTab.jsx: 6テーマグリッド・詳細（セクション表・コツ・テスト）・前後ナビ
-次フェーズ: フェーズ12「⑤論述対策タブ」
+         src/tabs/RonshutsuTab.jsx: 書き方ガイド・採点基準・模範解答7題・練習テーマ（カテゴリ別）
+次フェーズ: フェーズ13「⑥苦手分析タブ」
 */
 
 import { useState, useEffect, useCallback } from "react";
@@ -49,6 +50,7 @@ import KisochishikiTab from "./tabs/KisochishikiTab.jsx";
 import NihonshiTab from "./tabs/NihonshiTab.jsx";
 import SekaishiTab from "./tabs/SekaishiTab.jsx";
 import TemashiTab from "./tabs/TemashiTab.jsx";
+import RonshutsuTab from "./tabs/RonshutsuTab.jsx";
 
 // ============================================================
 // 定数
@@ -312,7 +314,7 @@ export default function App() {
       case "nihonshi":    return <NihonshiTab appData={appData} onUpdateData={updateData} onNavigate={navigate} />;
       case "sekaishi":    return <SekaishiTab appData={appData} onUpdateData={updateData} onNavigate={navigate} />;
       case "temashi":     return <TemashiTab appData={appData} onUpdateData={updateData} onNavigate={navigate} />;
-      case "ronshutsu":   return <PlaceholderTab tab={TABS[5]} phaseNum={12} />;
+      case "ronshutsu":   return <RonshutsuTab appData={appData} onUpdateData={updateData} onNavigate={navigate} />;
       case "nigate":      return <PlaceholderTab tab={TABS[6]} phaseNum={13} />;
       default:            return null;
     }
