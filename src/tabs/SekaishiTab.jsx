@@ -14,6 +14,7 @@ import {
   SectionCard, KeywordList, EventTimeline, TipCard,
 } from "../components/Cards.jsx";
 import { sekaishiData } from "../data/sekaishiData.js";
+import { WorldParallelDiagram, SekaishiSectionDiagram, hasSekaishiDiagram } from "../components/SekaishiDiagrams.jsx";
 
 // ============================================================
 // 定数
@@ -148,6 +149,7 @@ function SectionButton({ sectionId, progress, onSelect }) {
 function RegionListView({ progress, onSelect }) {
   return (
     <>
+      <WorldParallelDiagram />
       {REGION_GROUPS.map(group => (
         <div key={group.region} style={{ marginBottom: 14 }}>
           {/* 地域ヘッダー */}
@@ -289,6 +291,13 @@ function SectionDetail({ sectionId, appData, onUpdateData, onBack }) {
           )}
         </div>
       </div>
+
+      {/* 構造・交流図 */}
+      {hasSekaishiDiagram(sectionId) && (
+        <SectionCard title="📊 構造・交流図" color={color} defaultOpen>
+          <SekaishiSectionDiagram sectionId={sectionId} color={color} />
+        </SectionCard>
+      )}
 
       {/* トピック一覧 */}
       <SectionCard title="学習トピック" color={color} defaultOpen>
