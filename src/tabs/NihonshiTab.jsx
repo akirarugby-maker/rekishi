@@ -19,6 +19,7 @@ import {
 import { nihonshiDataAll, nihonshiOrderAll, nihonshiFigures } from "../data/nihonshiDataLate.js";
 import { nihonshiQuizEarly } from "../data/nihonshiData.js";
 import { nihonshiQuizLate } from "../data/nihonshiDataLate.js";
+import { PowerFlowDiagram, EraDiagram, hasDiagram } from "../components/Diagrams.jsx";
 
 // ============================================================
 // 定数
@@ -205,6 +206,7 @@ function EraListView({ progress, onSelect }) {
   return (
     <>
       <ProgressSummary progress={progress} />
+      <PowerFlowDiagram />
       <EraSelector selectedId={null} onSelect={onSelect} />
       <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
         {ERA_GROUPS.map(group => (
@@ -352,6 +354,13 @@ function EraDetail({ eraId, appData, onUpdateData, onBack }) {
           </div>
         </div>
       </div>
+
+      {/* 構造・組織図 */}
+      {hasDiagram(eraId) && (
+        <SectionCard title="📊 構造・組織図" color={color} defaultOpen>
+          <EraDiagram eraId={eraId} color={color} />
+        </SectionCard>
+      )}
 
       {/* キーワード */}
       <SectionCard title="重要キーワード" color={color} defaultOpen>
