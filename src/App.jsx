@@ -11,7 +11,7 @@
 フェーズ7:  ①基礎知識タブ            [✅]
 フェーズ8:  ②日本史タブ 前半         [✅]
 フェーズ9:  ②日本史タブ 後半         [✅]
-フェーズ10: ③世界史タブ              [ ]
+フェーズ10: ③世界史タブ              [✅]
 フェーズ11: ④テーマ史タブ            [ ]
 フェーズ12: ⑤論述対策タブ            [ ]
 フェーズ13: ⑥苦手分析タブ            [ ]
@@ -19,7 +19,7 @@
 フェーズ15: 仕上げ・模擬試験・結合    [ ]
 ========================================
 
-📍 CHECKPOINT: フェーズ9 完了
+📍 CHECKPOINT: フェーズ10 完了
 実装済み: グローバル状態・デザイントークン・タブ構造・ナビゲーション
          src/data/nihonshiData.js: 旧石器〜室町（10時代）・理解度テスト22問
          src/data/nihonshiDataLate.js: 戦国〜現代（7時代）・人物データ19名・理解度テスト15問
@@ -33,7 +33,8 @@
          src/tabs/KisochishikiTab.jsx: セクションA〜D・横スクロールタイムライン・23問のテスト・進捗連動
          src/tabs/NihonshiTab.jsx: 17時代グループ表示・時代詳細・理解度テスト・進捗連動
                                    人物図鑑（19名・時代フィルタ）・単語帳（フラッシュカード）・テスト履歴
-次フェーズ: フェーズ10「③世界史タブ」
+         src/tabs/SekaishiTab.jsx: 8セクション地域別/時代順表示・詳細・理解度テスト・進捗連動
+次フェーズ: フェーズ11「④テーマ史タブ」
 */
 
 import { useState, useEffect, useCallback } from "react";
@@ -45,6 +46,7 @@ import {
 import HomeTab from "./tabs/HomeTab.jsx";
 import KisochishikiTab from "./tabs/KisochishikiTab.jsx";
 import NihonshiTab from "./tabs/NihonshiTab.jsx";
+import SekaishiTab from "./tabs/SekaishiTab.jsx";
 
 // ============================================================
 // 定数
@@ -306,7 +308,7 @@ export default function App() {
       case "home":        return <HomeTab appData={appData} onUpdateData={updateData} onNavigate={navigate} />;
       case "kisochishiki":return <KisochishikiTab appData={appData} onUpdateData={updateData} onNavigate={navigate} />;
       case "nihonshi":    return <NihonshiTab appData={appData} onUpdateData={updateData} onNavigate={navigate} />;
-      case "sekaishi":    return <PlaceholderTab tab={TABS[3]} phaseNum={10} />;
+      case "sekaishi":    return <SekaishiTab appData={appData} onUpdateData={updateData} onNavigate={navigate} />;
       case "temashi":     return <PlaceholderTab tab={TABS[4]} phaseNum={11} />;
       case "ronshutsu":   return <PlaceholderTab tab={TABS[5]} phaseNum={12} />;
       case "nigate":      return <PlaceholderTab tab={TABS[6]} phaseNum={13} />;
