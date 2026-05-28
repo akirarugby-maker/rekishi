@@ -14,6 +14,7 @@ import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Cell,
 } from "recharts";
 import TabNav from "../components/TabNav.jsx";
+import { AIChatSection } from "../components/AIAdvisor.jsx";
 import { nihonshiDataAll } from "../data/nihonshiDataLate.js";
 import { sekaishiData } from "../data/sekaishiData.js";
 import { temashiData } from "../data/temashiData.js";
@@ -502,6 +503,7 @@ export default function NigateTab({ appData, onUpdateData, onNavigate }) {
           <WeakList sectionAvg={sectionAvg} />
           <BarSection sectionAvg={sectionAvg} />
           <HistoryList history={history} />
+          <AIChatSection appData={appData} />
         </>
       )}
     </div>

@@ -14,6 +14,7 @@ import {
   Scroll, Crown, Check, X, Sword,
 } from "lucide-react";
 import TabNav from "../components/TabNav.jsx";
+import { StudyPlanCard } from "../components/AIAdvisor.jsx";
 import { nihonshiDataAll, nihonshiOrderAll } from "../data/nihonshiDataLate.js";
 import { sekaishiData } from "../data/sekaishiData.js";
 import { temashiData, temashiOrder } from "../data/temashiData.js";
@@ -552,6 +553,9 @@ export default function HomeTab({ appData, onUpdateData, onNavigate }) {
           })}
         </div>
       </div>
+
+      {/* AIスタディプラン */}
+      <StudyPlanCard appData={appData} onNavigate={onNavigate} />
 
       {/* 進捗表（チェックリスト） */}
       <div style={S.card}>
