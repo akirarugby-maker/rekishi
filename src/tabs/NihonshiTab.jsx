@@ -6,7 +6,7 @@
   - モード切替ナビ（時代別 / 人物図鑑 / 単語帳）
 */
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   ChevronLeft, ChevronRight, Scroll, User, BookOpen,
   RotateCcw, CheckCircle, Clock,
@@ -781,10 +781,17 @@ function FlashcardStudy() {
 // メインコンポーネント
 // ============================================================
 
-export default function NihonshiTab({ appData, onUpdateData, onNavigate }) {
+export default function NihonshiTab({ appData, onUpdateData, onNavigate, navTarget }) {
   const [viewMode, setViewMode] = useState("list");
   const [selectedEraId, setSelectedEraId] = useState(null);
   const progress = appData.progress.nihonshi || {};
+
+  useEffect(() => {
+    if (navTarget?.eraId) {
+      setViewMode("list");
+      setSelectedEraId(navTarget.eraId);
+    }
+  }, [navTarget]);
 
   // 時代詳細ページ（list モード専用）
   if (viewMode === "list" && selectedEraId) {

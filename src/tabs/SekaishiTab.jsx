@@ -6,7 +6,7 @@
   - 進捗管理（8セクション）
 */
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Globe, ChevronLeft, ChevronRight, Clock } from "lucide-react";
 import TabNav from "../components/TabNav.jsx";
 import QuizComponent from "../components/QuizComponent.jsx";
@@ -442,10 +442,16 @@ function ViewModeTabs({ mode, onChange }) {
 // メインコンポーネント
 // ============================================================
 
-export default function SekaishiTab({ appData, onUpdateData, onNavigate }) {
+export default function SekaishiTab({ appData, onUpdateData, onNavigate, navTarget }) {
   const [viewMode, setViewMode] = useState("region");
   const [selectedId, setSelectedId] = useState(null);
   const progress = appData.progress.sekaishi || {};
+
+  useEffect(() => {
+    if (navTarget?.sectionId) {
+      setSelectedId(navTarget.sectionId);
+    }
+  }, [navTarget]);
 
   // セクション詳細ビュー
   if (selectedId) {

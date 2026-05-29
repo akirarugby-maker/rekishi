@@ -296,6 +296,7 @@ export default function App() {
   const [activeTab, setActiveTab] = useState("home");
   const [appData, setAppData] = useState(loadData);
   const [navStack, setNavStack] = useState([]);
+  const [navTarget, setNavTarget] = useState(null);
 
   const updateData = useCallback((partial) => {
     setAppData(prev => {
@@ -305,9 +306,11 @@ export default function App() {
     });
   }, []);
 
-  const navigate = useCallback((tabId) => {
+  // target: optional { eraId, sectionId } — consumed by NihonshiTab / SekaishiTab on mount
+  const navigate = useCallback((tabId, target) => {
     setNavStack(prev => [...prev, activeTab]);
     setActiveTab(tabId);
+    setNavTarget(target ? { ...target, _key: Date.now() } : null);
   }, [activeTab]);
 
   const goBack = useCallback(() => {
@@ -321,13 +324,13 @@ export default function App() {
     switch (activeTab) {
       case "home":        return <HomeTab appData={appData} onUpdateData={updateData} onNavigate={navigate} />;
       case "kisochishiki":return <KisochishikiTab appData={appData} onUpdateData={updateData} onNavigate={navigate} />;
-      case "nihonshi":    return <NihonshiTab appData={appData} onUpdateData={updateData} onNavigate={navigate} />;
-      case "sekaishi":    return <SekaishiTab appData={appData} onUpdateData={updateData} onNavigate={navigate} />;
+      case "nihonshi":    return <NihonshiTab appData={appData} onUpdateData={updateData} onNavigate={navigate} navTarget={navTarget} />;
+      case "sekaishi":    return <SekaishiTab appData={appData} onUpdateData={updateData} onNavigate={navigate} navTarget={navTarget} />;
       case "temashi":     return <TemashiTab appData={appData} onUpdateData={updateData} onNavigate={navigate} />;
       case "ronshutsu":   return <RonshutsuTab appData={appData} onUpdateData={updateData} onNavigate={navigate} />;
       case "nigate":      return <NigateTab appData={appData} onUpdateData={updateData} onNavigate={navigate} />;
       case "mockexam":    return <MockExamTab appData={appData} onUpdateData={updateData} onNavigate={navigate} />;
-      case "nenpyo":      return <NenpyoTab />;
+      case "nenpyo":      return <NenpyoTab onNavigate={navigate} />;
       default:            return null;
     }
   };

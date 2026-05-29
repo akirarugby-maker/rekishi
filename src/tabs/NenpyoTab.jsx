@@ -120,7 +120,7 @@ function AxisAndMarkers() {
   );
 }
 
-function EventCard({ ev, side }) {
+function EventCard({ ev, side, onNavigate }) {
   const isJp  = side === "jp";
   const laneY = isJp ? JP_L_TOP[ev.lane] : WD_L_TOP[ev.lane];
   const cx    = ev.cx;
@@ -129,6 +129,15 @@ function EventCard({ ev, side }) {
   const bg    = isJp
     ? (ev.imp >= 3 ? JP_BG_3 : JP_BG_2)
     : (ev.imp >= 3 ? WD_BG_3 : WD_BG_2);
+
+  const handleClick = (e) => {
+    e.stopPropagation();
+    if (isJp && ev.eraId) {
+      onNavigate("nihonshi", { eraId: ev.eraId });
+    } else if (!isJp && ev.sectionId) {
+      onNavigate("sekaishi", { sectionId: ev.sectionId });
+    }
+  };
 
   // Connecting line
   const lineX = cx - 0.5;
@@ -162,44 +171,56 @@ function EventCard({ ev, side }) {
         pointerEvents: "none",
         zIndex: 2,
       }} />
-      {/* Card */}
-      <div style={{
-        position: "absolute",
-        left,
-        top: laneY,
-        width: ev.w,
-        height: CARD_H,
-        background: bg,
-        border: `1.5px solid ${color}40`,
-        borderLeft: `3px solid ${ev.imp >= 3 ? color : color + "80"}`,
-        borderRadius: "0 6px 6px 0",
-        padding: "0 6px 0 4px",
-        fontSize: ev.imp >= 3 ? 10 : 9.5,
-        fontWeight: ev.imp >= 3 ? 700 : 500,
-        color: "#333",
-        display: "flex",
-        alignItems: "center",
-        lineHeight: 1.25,
-        overflow: "hidden",
-        boxShadow: ev.imp >= 3 ? `0 1px 4px ${color}20` : "none",
-        zIndex: 3,
-      }}>
-        {ev.label}
+      {/* Card — clickable */}
+      <div
+        onClick={handleClick}
+        style={{
+          position: "absolute",
+          left,
+          top: laneY,
+          width: ev.w,
+          height: CARD_H,
+          background: bg,
+          border: `1.5px solid ${color}40`,
+          borderLeft: `3px solid ${ev.imp >= 3 ? color : color + "80"}`,
+          borderRadius: "0 6px 6px 0",
+          padding: "0 5px 0 4px",
+          fontSize: ev.imp >= 3 ? 10 : 9.5,
+          fontWeight: ev.imp >= 3 ? 700 : 500,
+          color: "#333",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          gap: 2,
+          lineHeight: 1.25,
+          overflow: "hidden",
+          boxShadow: ev.imp >= 3 ? `0 1px 4px ${color}20` : "none",
+          zIndex: 3,
+          cursor: "pointer",
+        }}
+        title={`${ev.label} — タップして詳細へ`}
+      >
+        <span style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", flex: 1 }}>
+          {ev.label}
+        </span>
+        <span style={{ fontSize: 8, color: `${color}cc`, flexShrink: 0, marginLeft: 2 }}>▶</span>
       </div>
     </>
   );
 }
 
 // ─── Main component ──────────────────────────────────────────
-export default function NenpyoTab() {
-  const scrollRef  = useRef(null);
-  const isDragging = useRef(false);
-  const startX     = useRef(0);
-  const scrollLeft = useRef(0);
+export default function NenpyoTab({ onNavigate }) {
+  const scrollRef   = useRef(null);
+  const isDragging  = useRef(false);
+  const didDrag     = useRef(false); // true if mouse moved enough to be a drag (not a click)
+  const startX      = useRef(0);
+  const scrollLeft  = useRef(0);
 
   const handleMouseDown = useCallback((e) => {
     if (e.button !== 0) return;
     isDragging.current = true;
+    didDrag.current    = false;
     startX.current     = e.clientX;
     scrollLeft.current = scrollRef.current.scrollLeft;
     scrollRef.current.style.cursor = "grabbing";
@@ -209,12 +230,18 @@ export default function NenpyoTab() {
   const handleMouseMove = useCallback((e) => {
     if (!isDragging.current) return;
     const dx = e.clientX - startX.current;
+    if (Math.abs(dx) > 4) didDrag.current = true;
     scrollRef.current.scrollLeft = scrollLeft.current - dx;
   }, []);
 
   const stopDrag = useCallback(() => {
     isDragging.current = false;
     if (scrollRef.current) scrollRef.current.style.cursor = "grab";
+  }, []);
+
+  // Suppress card click when drag just ended
+  const handleContainerClick = useCallback((e) => {
+    if (didDrag.current) { didDrag.current = false; e.stopPropagation(); }
   }, []);
 
   const jumpToYear = useCallback((year) => {
@@ -284,7 +311,7 @@ export default function NenpyoTab() {
         <span>
           <span style={{ color: WD_COLOR, fontWeight: 700 }}>■</span> 世界史
         </span>
-        <span style={{ color: "#888" }}>← ドラッグ / スワイプ で横スクロール →</span>
+        <span style={{ color: "#888" }}>← ドラッグ/スワイプで横スクロール　▶ カードをタップで詳細へ</span>
       </div>
 
       {/* Timeline scroll area */}
@@ -294,6 +321,7 @@ export default function NenpyoTab() {
         onMouseMove={handleMouseMove}
         onMouseUp={stopDrag}
         onMouseLeave={stopDrag}
+        onClick={handleContainerClick}
         style={{
           overflowX: "auto",
           overflowY: "hidden",
@@ -321,12 +349,12 @@ export default function NenpyoTab() {
 
           {/* Japanese events */}
           {JP_EVENTS.map((ev, i) => (
-            <EventCard key={`jp-${i}`} ev={ev} side="jp" />
+            <EventCard key={`jp-${i}`} ev={ev} side="jp" onNavigate={onNavigate} />
           ))}
 
           {/* World events */}
           {WD_EVENTS.map((ev, i) => (
-            <EventCard key={`wd-${i}`} ev={ev} side="wd" />
+            <EventCard key={`wd-${i}`} ev={ev} side="wd" onNavigate={onNavigate} />
           ))}
         </div>
       </div>
