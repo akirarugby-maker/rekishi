@@ -49,7 +49,7 @@ import { useState, useEffect, useCallback } from "react";
 import {
   BookOpen, BarChart2, Home,
   Globe, ChevronLeft,
-  Brain, Scroll, Crown,
+  Brain, Scroll, Crown, CalendarDays,
 } from "lucide-react";
 import HomeTab from "./tabs/HomeTab.jsx";
 import KisochishikiTab from "./tabs/KisochishikiTab.jsx";
@@ -59,6 +59,7 @@ import TemashiTab from "./tabs/TemashiTab.jsx";
 import RonshutsuTab from "./tabs/RonshutsuTab.jsx";
 import NigateTab from "./tabs/NigateTab.jsx";
 import MockExamTab from "./tabs/MockExamTab.jsx";
+import NenpyoTab from "./tabs/NenpyoTab.jsx";
 
 // ============================================================
 // 定数
@@ -73,7 +74,8 @@ const TABS = [
   { id: "sekaishi",     label: "世界史",    icon: Globe,    color: "var(--color-highlight)" },
   { id: "temashi",      label: "テーマ史",  icon: Crown,    color: "var(--color-warning)" },
   { id: "ronshutsu",    label: "論述対策",  icon: Brain,    color: "#A0C4FF" },
-  { id: "nigate",       label: "苦手分析",  icon: BarChart2,color: "#B5EAD7" },
+  { id: "nigate",       label: "苦手分析",  icon: BarChart2,    color: "#B5EAD7" },
+  { id: "nenpyo",       label: "年表",      icon: CalendarDays, color: "#F9C74F" },
 ];
 
 // ============================================================
@@ -325,6 +327,7 @@ export default function App() {
       case "ronshutsu":   return <RonshutsuTab appData={appData} onUpdateData={updateData} onNavigate={navigate} />;
       case "nigate":      return <NigateTab appData={appData} onUpdateData={updateData} onNavigate={navigate} />;
       case "mockexam":    return <MockExamTab appData={appData} onUpdateData={updateData} onNavigate={navigate} />;
+      case "nenpyo":      return <NenpyoTab />;
       default:            return null;
     }
   };
