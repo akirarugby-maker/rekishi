@@ -10,7 +10,7 @@ import { useState } from "react";
 import { BookOpen, Clock, FileText, PenTool, ChevronRight, ChevronLeft } from "lucide-react";
 import TabNav from "../components/TabNav.jsx";
 import QuizComponent from "../components/QuizComponent.jsx";
-import { SectionCard, TipCard, InfoTable, ProgressSection } from "../components/Cards.jsx";
+import { SectionCard, TipCard, InfoTable, ProgressSection, YouTubeSearchButton } from "../components/Cards.jsx";
 
 // ============================================================
 // セクションA クイズ（5問）
@@ -464,6 +464,11 @@ export default function KisochishikiTab({ appData, onUpdateData, onNavigate }) {
         {/* セクション D */}
         {activeSection === "D" && (
           <SectionDContent />
+        )}
+
+        {/* YouTube検索ボタン（セクションB・Cのみ：歴史内容があるセクション） */}
+        {(activeSection === "B" || activeSection === "C") && (
+          <YouTubeSearchButton query={activeSection === "B" ? "日本史 時代区分 まとめ" : "歴史 記述問題 解き方"} />
         )}
 
         {/* テスト開始ボタン */}

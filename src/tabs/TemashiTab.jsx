@@ -12,7 +12,7 @@ import {
 } from "lucide-react";
 import TabNav from "../components/TabNav.jsx";
 import QuizComponent from "../components/QuizComponent.jsx";
-import { SectionCard, TipCard } from "../components/Cards.jsx";
+import { SectionCard, TipCard, YouTubeSearchButton } from "../components/Cards.jsx";
 import { temashiData, temashiOrder } from "../data/temashiData.js";
 import { TemashiThemeDiagram } from "../components/TemashiDiagrams.jsx";
 
@@ -258,6 +258,9 @@ function ThemeDetail({ themeId, appData, onUpdateData, onBack }) {
           <SectionContent content={sec.content} color={theme.color} />
         </SectionCard>
       ))}
+
+      {/* YouTube検索ボタン */}
+      <YouTubeSearchButton query={`${theme.label} 歴史`} />
 
       {/* 試験のコツ */}
       {theme.examTips?.length > 0 && (

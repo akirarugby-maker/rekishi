@@ -386,3 +386,43 @@ export function DifficultyBadge({ level }) {
     </span>
   );
 }
+
+// ============================================================
+// YouTubeSearchButton — YouTube検索リンクボタン
+// ============================================================
+
+export function YouTubeSearchButton({ query }) {
+  if (!query) return null;
+  const searchQuery = encodeURIComponent(query + " 歴史 解説");
+  const url = `https://www.youtube.com/results?search_query=${searchQuery}`;
+  return (
+    <a
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        gap: 8,
+        padding: "11px 16px",
+        background: "#FF000010",
+        border: "1.5px solid #FF000035",
+        borderRadius: 10,
+        color: "#CC0000",
+        fontSize: 13,
+        fontWeight: 700,
+        textDecoration: "none",
+        fontFamily: "var(--font-family)",
+        marginTop: 8,
+        cursor: "pointer",
+      }}
+    >
+      <svg width="22" height="16" viewBox="0 0 22 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="22" height="16" rx="3.5" fill="#FF0000"/>
+        <polygon points="9,4 9,12 16.5,8" fill="white"/>
+      </svg>
+      「{query}」をYouTubeで検索
+    </a>
+  );
+}

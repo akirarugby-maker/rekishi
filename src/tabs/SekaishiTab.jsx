@@ -11,7 +11,7 @@ import { Globe, ChevronLeft, ChevronRight, Clock } from "lucide-react";
 import TabNav from "../components/TabNav.jsx";
 import QuizComponent from "../components/QuizComponent.jsx";
 import {
-  SectionCard, KeywordList, EventTimeline, TipCard,
+  SectionCard, KeywordList, EventTimeline, TipCard, YouTubeSearchButton,
 } from "../components/Cards.jsx";
 import { sekaishiData } from "../data/sekaishiData.js";
 import { WorldParallelDiagram, SekaishiSectionDiagram, hasSekaishiDiagram } from "../components/SekaishiDiagrams.jsx";
@@ -345,6 +345,11 @@ function SectionDetail({ sectionId, appData, onUpdateData, onBack }) {
             );
           })}
         </SectionCard>
+      )}
+
+      {/* YouTube検索ボタン */}
+      {sec.topics?.length > 0 && (
+        <YouTubeSearchButton query={`${sec.region} ${sec.era}`} />
       )}
 
       {/* 隣接セクションナビゲーション */}

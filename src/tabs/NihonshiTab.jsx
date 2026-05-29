@@ -14,7 +14,7 @@ import {
 import TabNav from "../components/TabNav.jsx";
 import QuizComponent from "../components/QuizComponent.jsx";
 import {
-  SectionCard, KeywordList, EventTimeline, TipCard, FigureCard,
+  SectionCard, KeywordList, EventTimeline, TipCard, FigureCard, YouTubeSearchButton,
 } from "../components/Cards.jsx";
 import { nihonshiDataAll, nihonshiOrderAll, nihonshiFigures } from "../data/nihonshiDataLate.js";
 import { nihonshiQuizEarly } from "../data/nihonshiData.js";
@@ -429,11 +429,16 @@ function EraDetail({ eraId, appData, onUpdateData, onBack }) {
         </SectionCard>
       )}
 
+      {/* YouTube検索ボタン */}
+      {era.keywords?.length > 0 && (
+        <YouTubeSearchButton query={era.name} />
+      )}
+
       {/* 理解度テスト */}
       <div style={{
         background: "#fff", borderRadius: 14,
         border: "1px solid var(--color-border)",
-        padding: "16px", textAlign: "center", marginTop: 4,
+        padding: "16px", textAlign: "center", marginTop: 8,
       }}>
         <div style={{ fontSize: 14, fontWeight: 700, marginBottom: 6 }}>{era.name} 理解度テスト</div>
         <div style={{ fontSize: 12, color: "var(--color-text-light)", marginBottom: 12 }}>
