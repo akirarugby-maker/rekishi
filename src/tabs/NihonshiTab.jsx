@@ -20,6 +20,7 @@ import { nihonshiDataAll, nihonshiOrderAll, nihonshiFigures } from "../data/niho
 import { nihonshiQuizEarly } from "../data/nihonshiData.js";
 import { nihonshiQuizLate } from "../data/nihonshiDataLate.js";
 import { PowerFlowDiagram, EraDiagram, hasDiagram } from "../components/Diagrams.jsx";
+import { EraPersonDiagram, hasPersonDiagram } from "../components/PersonDiagrams.jsx";
 
 // ============================================================
 // 定数
@@ -359,6 +360,13 @@ function EraDetail({ eraId, appData, onUpdateData, onBack }) {
       {hasDiagram(eraId) && (
         <SectionCard title="📊 構造・組織図" color={color} defaultOpen>
           <EraDiagram eraId={eraId} color={color} />
+        </SectionCard>
+      )}
+
+      {/* 人物関係図 */}
+      {hasPersonDiagram(eraId) && (
+        <SectionCard title="👥 人物関係図" color={color} defaultOpen>
+          <EraPersonDiagram eraId={eraId} color={color} />
         </SectionCard>
       )}
 

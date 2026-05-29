@@ -14,6 +14,7 @@ import TabNav from "../components/TabNav.jsx";
 import QuizComponent from "../components/QuizComponent.jsx";
 import { SectionCard, TipCard } from "../components/Cards.jsx";
 import { temashiData, temashiOrder } from "../data/temashiData.js";
+import { TemashiThemeDiagram } from "../components/TemashiDiagrams.jsx";
 
 // ============================================================
 // アイコンマッピング
@@ -245,6 +246,11 @@ function ThemeDetail({ themeId, appData, onUpdateData, onBack }) {
           )}
         </div>
       </div>
+
+      {/* テーマ図解 */}
+      <SectionCard title="📊 テーマ図解" color={theme.color} defaultOpen>
+        <TemashiThemeDiagram themeId={themeId} color={theme.color} />
+      </SectionCard>
 
       {/* セクションコンテンツ */}
       {theme.sections?.map((sec, i) => (
