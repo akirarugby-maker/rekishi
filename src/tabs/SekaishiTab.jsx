@@ -72,14 +72,14 @@ function ProgressSummary({ progress }) {
     }}>
       <Globe size={16} color="var(--color-highlight)" />
       <div style={{ flex: 1 }}>
-        <div style={{ fontSize: 11, color: "var(--color-text-light)", marginBottom: 3 }}>
+        <div style={{ fontSize: 19, color: "var(--color-text-light)", marginBottom: 3 }}>
           世界史 進捗: {done}/{TOTAL} セクション
         </div>
         <div style={{ height: 6, borderRadius: 999, background: "var(--color-border)", overflow: "hidden" }}>
           <div style={{ height: "100%", width: `${pct}%`, background: "var(--color-highlight)", borderRadius: 999, transition: "width 0.5s" }} />
         </div>
       </div>
-      <span style={{ fontSize: 12, fontWeight: 700, color: "var(--color-highlight)" }}>{pct}%</span>
+      <span style={{ fontSize: 20, fontWeight: 700, color: "var(--color-highlight)" }}>{pct}%</span>
     </div>
   );
 }
@@ -120,11 +120,11 @@ function SectionButton({ sectionId, progress, onSelect }) {
 
       {/* テキスト */}
       <div style={{ flex: 1, minWidth: 0 }}>
-        <div style={{ fontSize: 13, fontWeight: 700, marginBottom: 2, color: "var(--color-text)" }}>
+        <div style={{ fontSize: 19, fontWeight: 700, marginBottom: 2, color: "var(--color-text)" }}>
           {sec.era}
         </div>
         <div style={{
-          fontSize: 11, color: "var(--color-text-light)",
+          fontSize: 19, color: "var(--color-text-light)",
           whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis",
         }}>
           {sec.topics.slice(0, 3).join("・")}
@@ -133,8 +133,8 @@ function SectionButton({ sectionId, progress, onSelect }) {
 
       {/* バッジ */}
       <div style={{ flexShrink: 0, textAlign: "right" }}>
-        <div style={{ fontSize: 10, color: "var(--color-text-light)" }}>{quizCount}問</div>
-        {done && <div style={{ fontSize: 11, color: "var(--color-accent)", fontWeight: 700, marginTop: 2 }}>✓</div>}
+        <div style={{ fontSize: 20, color: "var(--color-text-light)" }}>{quizCount}問</div>
+        {done && <div style={{ fontSize: 19, color: "var(--color-accent)", fontWeight: 700, marginTop: 2 }}>✓</div>}
       </div>
 
       <ChevronRight size={14} color="var(--color-text-light)" style={{ flexShrink: 0 }} />
@@ -160,8 +160,8 @@ function RegionListView({ progress, onSelect }) {
             marginBottom: 8,
           }}>
             <div style={{ width: 8, height: 8, borderRadius: "50%", background: group.color, flexShrink: 0 }} />
-            <span style={{ fontSize: 13, fontWeight: 700, color: "var(--color-text)" }}>{group.region}</span>
-            <span style={{ fontSize: 11, color: "var(--color-text-light)", marginLeft: "auto" }}>
+            <span style={{ fontSize: 19, fontWeight: 700, color: "var(--color-text)" }}>{group.region}</span>
+            <span style={{ fontSize: 19, color: "var(--color-text-light)", marginLeft: "auto" }}>
               {group.ids.filter(id => progress?.[id]).length}/{group.ids.length} 完了
             </span>
           </div>
@@ -197,7 +197,7 @@ function ChronologicalView({ progress, onSelect }) {
             </div>
             {/* カード */}
             <div style={{ flex: 1 }}>
-              <div style={{ fontSize: 10, color: "var(--color-text-light)", marginBottom: 4, fontWeight: 600 }}>
+              <div style={{ fontSize: 20, color: "var(--color-text-light)", marginBottom: 4, fontWeight: 600 }}>
                 {sec?.region}
               </div>
               <SectionButton sectionId={id} progress={progress} onSelect={onSelect} />
@@ -249,7 +249,7 @@ function SectionDetail({ sectionId, appData, onUpdateData, onBack }) {
       <div className="fade-in">
         <button
           onClick={() => setShowQuiz(false)}
-          style={{ background: "none", border: "none", cursor: "pointer", color, fontFamily: "var(--font-family)", fontSize: 13, fontWeight: 600, display: "flex", alignItems: "center", gap: 5, marginBottom: 16, padding: 0 }}
+          style={{ background: "none", border: "none", cursor: "pointer", color, fontFamily: "var(--font-family)", fontSize: 19, fontWeight: 600, display: "flex", alignItems: "center", gap: 5, marginBottom: 16, padding: 0 }}
         >
           <ChevronLeft size={16} />{sec.era}に戻る
         </button>
@@ -263,7 +263,7 @@ function SectionDetail({ sectionId, appData, onUpdateData, onBack }) {
       {/* 戻るボタン */}
       <button
         onClick={onBack}
-        style={{ background: "none", border: "none", cursor: "pointer", color: "var(--color-text-light)", fontFamily: "var(--font-family)", fontSize: 13, fontWeight: 600, display: "flex", alignItems: "center", gap: 5, marginBottom: 14, padding: 0 }}
+        style={{ background: "none", border: "none", cursor: "pointer", color: "var(--color-text-light)", fontFamily: "var(--font-family)", fontSize: 19, fontWeight: 600, display: "flex", alignItems: "center", gap: 5, marginBottom: 14, padding: 0 }}
       >
         <ChevronLeft size={16} />セクション一覧に戻る
       </button>
@@ -277,15 +277,15 @@ function SectionDetail({ sectionId, appData, onUpdateData, onBack }) {
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
           <div>
             <div style={{
-              fontSize: 11, fontWeight: 700, color,
+              fontSize: 19, fontWeight: 700, color,
               marginBottom: 4, letterSpacing: "0.06em",
             }}>
               {sec.region}
             </div>
-            <div style={{ fontSize: 18, fontWeight: 700, lineHeight: 1.4 }}>{sec.era}</div>
+            <div style={{ fontSize: 20, fontWeight: 700, lineHeight: 1.4 }}>{sec.era}</div>
           </div>
           {done && (
-            <div style={{ fontSize: 13, fontWeight: 700, color: "var(--color-accent)", flexShrink: 0 }}>
+            <div style={{ fontSize: 19, fontWeight: 700, color: "var(--color-accent)", flexShrink: 0 }}>
               ✓ 完了済み
             </div>
           )}
@@ -332,12 +332,12 @@ function SectionDetail({ sectionId, appData, onUpdateData, onBack }) {
               }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
                   <Clock size={12} color="var(--color-text-light)" />
-                  <span style={{ fontSize: 12, color: "var(--color-text-light)" }}>{h.date}</span>
+                  <span style={{ fontSize: 20, color: "var(--color-text-light)" }}>{h.date}</span>
                 </div>
                 <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                  <span style={{ fontSize: 13, fontWeight: 600 }}>{h.score}/{h.total}</span>
+                  <span style={{ fontSize: 19, fontWeight: 600 }}>{h.score}/{h.total}</span>
                   <span style={{
-                    fontSize: 11, fontWeight: 700, color: gradeColor,
+                    fontSize: 19, fontWeight: 700, color: gradeColor,
                     background: gradeColor + "20", padding: "2px 8px", borderRadius: 999,
                   }}>{grade}</span>
                 </div>
@@ -361,10 +361,10 @@ function SectionDetail({ sectionId, appData, onUpdateData, onBack }) {
         border: "1px solid var(--color-border)",
         padding: "16px", textAlign: "center", marginTop: 4,
       }}>
-        <div style={{ fontSize: 14, fontWeight: 700, marginBottom: 6 }}>
+        <div style={{ fontSize: 20, fontWeight: 700, marginBottom: 6 }}>
           {sec.era} 理解度テスト
         </div>
-        <div style={{ fontSize: 12, color: "var(--color-text-light)", marginBottom: 12 }}>
+        <div style={{ fontSize: 20, color: "var(--color-text-light)", marginBottom: 12 }}>
           {quizzes.length > 0 ? `${quizzes.length}問 / 60%以上で完了チェック` : "テスト問題を準備中です"}
         </div>
         <button
@@ -375,7 +375,7 @@ function SectionDetail({ sectionId, appData, onUpdateData, onBack }) {
             borderRadius: 12, border: "none",
             background: quizzes.length > 0 ? color : "var(--color-border)",
             color: "#fff",
-            fontFamily: "var(--font-family)", fontSize: 14, fontWeight: 700,
+            fontFamily: "var(--font-family)", fontSize: 20, fontWeight: 700,
             cursor: quizzes.length > 0 ? "pointer" : "default",
             opacity: quizzes.length > 0 ? 1 : 0.6,
           }}
@@ -424,7 +424,7 @@ function ViewModeTabs({ mode, onChange }) {
               flex: 1, padding: "8px 0", borderRadius: 7, border: "none",
               background: active ? "#fff" : "transparent",
               color: active ? "var(--color-highlight)" : "var(--color-text-light)",
-              fontFamily: "var(--font-family)", fontSize: 12, fontWeight: active ? 700 : 500,
+              fontFamily: "var(--font-family)", fontSize: 20, fontWeight: active ? 700 : 500,
               cursor: "pointer",
               boxShadow: active ? "0 1px 6px rgba(0,0,0,0.10)" : "none",
               transition: "all 0.15s",
@@ -475,18 +475,18 @@ export default function SekaishiTab({ appData, onUpdateData, onNavigate, navTarg
             {prevId ? (
               <button
                 onClick={() => setSelectedId(prevId)}
-                style={{ flex: 1, display: "flex", alignItems: "center", gap: 6, padding: "10px 12px", borderRadius: 10, border: "1px solid var(--color-border)", background: "#fff", cursor: "pointer", fontFamily: "var(--font-family)", fontSize: 12, fontWeight: 600, color: "var(--color-text)" }}
+                style={{ flex: 1, display: "flex", alignItems: "center", gap: 6, padding: "10px 12px", borderRadius: 10, border: "1px solid var(--color-border)", background: "#fff", cursor: "pointer", fontFamily: "var(--font-family)", fontSize: 20, fontWeight: 600, color: "var(--color-text)" }}
               >
                 <ChevronLeft size={14} />
-                <span style={{ fontSize: 11 }}>{sekaishiData[prevId]?.era}</span>
+                <span style={{ fontSize: 19 }}>{sekaishiData[prevId]?.era}</span>
               </button>
             ) : <div style={{ flex: 1 }} />}
             {nextId && (
               <button
                 onClick={() => setSelectedId(nextId)}
-                style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "flex-end", gap: 6, padding: "10px 12px", borderRadius: 10, border: "1px solid var(--color-border)", background: "#fff", cursor: "pointer", fontFamily: "var(--font-family)", fontSize: 12, fontWeight: 600, color: "var(--color-text)" }}
+                style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "flex-end", gap: 6, padding: "10px 12px", borderRadius: 10, border: "1px solid var(--color-border)", background: "#fff", cursor: "pointer", fontFamily: "var(--font-family)", fontSize: 20, fontWeight: 600, color: "var(--color-text)" }}
               >
-                <span style={{ fontSize: 11 }}>{sekaishiData[nextId]?.era}</span>
+                <span style={{ fontSize: 19 }}>{sekaishiData[nextId]?.era}</span>
                 <ChevronRight size={14} />
               </button>
             )}
@@ -508,9 +508,9 @@ export default function SekaishiTab({ appData, onUpdateData, onNavigate, navTarg
       }}>
         <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4 }}>
           <Globe size={18} color="var(--color-highlight)" />
-          <span style={{ fontSize: 15, fontWeight: 700 }}>世界史タブ</span>
+          <span style={{ fontSize: 19, fontWeight: 700 }}>世界史タブ</span>
         </div>
-        <div style={{ fontSize: 12, color: "var(--color-text-light)", lineHeight: 1.7 }}>
+        <div style={{ fontSize: 20, color: "var(--color-text-light)", lineHeight: 1.7 }}>
           東アジア・中東・ヨーロッパ・産業革命〜現代まで8セクションを収録。地域別・時代順で学べます。
         </div>
       </div>

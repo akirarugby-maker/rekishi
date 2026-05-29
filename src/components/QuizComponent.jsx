@@ -37,14 +37,14 @@ const S = {
   },
 
   qLabel: {
-    fontSize: 11, fontWeight: 700,
+    fontSize: 19, fontWeight: 700,
     color: "var(--color-primary)",
     background: "var(--color-primary)18",
     padding: "2px 10px",
     borderRadius: 999, display: "inline-block", marginBottom: 10,
   },
 
-  qText: { fontSize: 15, fontWeight: 600, lineHeight: 1.7, color: "var(--color-text)" },
+  qText: { fontSize: 19, fontWeight: 600, lineHeight: 1.7, color: "var(--color-text)" },
 
   choiceBtn: (state) => ({
     width: "100%", textAlign: "left",
@@ -63,7 +63,7 @@ const S = {
       "#fff",
     cursor: state ? "default" : "pointer",
     fontFamily: "var(--font-family)",
-    fontSize: 14, fontWeight: 500,
+    fontSize: 20, fontWeight: 600,
     color: "var(--color-text)",
     display: "flex", alignItems: "center", gap: 10,
     transition: "background 0.15s, border-color 0.15s",
@@ -83,7 +83,7 @@ const S = {
     borderRadius: 10,
     background: correct ? "#8FBC8F15" : "#FF8FAB15",
     border: `1px solid ${correct ? "var(--color-accent)" : "var(--color-warning)"}`,
-    fontSize: 13, lineHeight: 1.7,
+    fontSize: 19, lineHeight: 1.7,
     color: "var(--color-text)",
   }),
 
@@ -92,7 +92,7 @@ const S = {
     width: "100%", padding: "12px",
     borderRadius: 12, border: "none",
     background: "var(--color-primary)", color: "#fff",
-    fontFamily: "var(--font-family)", fontSize: 14, fontWeight: 700,
+    fontFamily: "var(--font-family)", fontSize: 20, fontWeight: 700,
     cursor: "pointer", marginTop: 4,
     transition: "opacity 0.2s",
   },
@@ -110,7 +110,7 @@ const S = {
     padding: "10px 12px", borderRadius: 10,
     border: "1px solid var(--color-border)",
     background: "#fff", marginBottom: 8,
-    cursor: "grab", fontSize: 13, fontWeight: 500,
+    cursor: "grab", fontSize: 19, fontWeight: 600,
     boxShadow: "var(--shadow-sm)",
   }),
 
@@ -119,7 +119,7 @@ const S = {
     background: "var(--color-primary)22",
     color: "var(--color-primary)",
     display: "flex", alignItems: "center", justifyContent: "center",
-    fontSize: 12, fontWeight: 700, flexShrink: 0,
+    fontSize: 20, fontWeight: 700, flexShrink: 0,
   },
 };
 
@@ -214,7 +214,7 @@ function ChronologicalQuiz({ quiz, onAnswer }) {
 
   return (
     <div style={{ marginTop: 14 }}>
-      <div style={{ fontSize: 12, color: "var(--color-text-light)", marginBottom: 10 }}>
+      <div style={{ fontSize: 20, color: "var(--color-text-light)", marginBottom: 10 }}>
         ▲▼ を押して並び替えてください
       </div>
 
@@ -227,12 +227,12 @@ function ChronologicalQuiz({ quiz, onAnswer }) {
               <button
                 onClick={() => moveUp(pos)}
                 disabled={pos === 0}
-                style={{ background: "none", border: "none", cursor: pos === 0 ? "default" : "pointer", opacity: pos === 0 ? 0.3 : 1, fontSize: 12, padding: "2px 6px" }}
+                style={{ background: "none", border: "none", cursor: pos === 0 ? "default" : "pointer", opacity: pos === 0 ? 0.3 : 1, fontSize: 20, padding: "2px 6px" }}
               >▲</button>
               <button
                 onClick={() => moveDown(pos)}
                 disabled={pos === order.length - 1}
-                style={{ background: "none", border: "none", cursor: pos === order.length - 1 ? "default" : "pointer", opacity: pos === order.length - 1 ? 0.3 : 1, fontSize: 12, padding: "2px 6px" }}
+                style={{ background: "none", border: "none", cursor: pos === order.length - 1 ? "default" : "pointer", opacity: pos === order.length - 1 ? 0.3 : 1, fontSize: 20, padding: "2px 6px" }}
               >▼</button>
             </div>
           )}
@@ -294,7 +294,7 @@ function InputQuiz({ quiz, onAnswer }) {
           border: answered
             ? `2px solid ${isCorrect ? "var(--color-accent)" : "var(--color-warning)"}`
             : "1px solid var(--color-border)",
-          fontFamily: "var(--font-family)", fontSize: 15,
+          fontFamily: "var(--font-family)", fontSize: 19,
           outline: "none", background: "#fff",
           color: "var(--color-text)",
           marginBottom: 10,
@@ -344,7 +344,7 @@ function QuizResult({ results, total, onRetry, onFinish }) {
         display: "inline-block", padding: "4px 16px", borderRadius: 999,
         background: passed ? "var(--color-accent)20" : "var(--color-warning)20",
         color: passed ? "var(--color-accent)" : "var(--color-warning)",
-        fontWeight: 700, fontSize: 14, marginBottom: 20,
+        fontWeight: 700, fontSize: 20, marginBottom: 20,
       }}>
         {pct >= 80 ? "優秀！" : pct >= 60 ? "合格ライン！" : "もう少し復習しよう"}
       </div>
@@ -358,7 +358,7 @@ function QuizResult({ results, total, onRetry, onFinish }) {
               width: 32, height: 32, borderRadius: "50%",
               background: r ? "var(--color-accent)" : "var(--color-warning)",
               color: "#fff", display: "flex", alignItems: "center", justifyContent: "center",
-              fontSize: 13, fontWeight: 700,
+              fontSize: 19, fontWeight: 700,
             }}
           >
             {i + 1}
@@ -374,7 +374,7 @@ function QuizResult({ results, total, onRetry, onFinish }) {
             padding: "10px 20px", borderRadius: 10,
             border: "1px solid var(--color-border)",
             background: "#fff", cursor: "pointer",
-            fontFamily: "var(--font-family)", fontSize: 14, fontWeight: 600,
+            fontFamily: "var(--font-family)", fontSize: 20, fontWeight: 600,
             color: "var(--color-text)",
           }}
         >
@@ -388,7 +388,7 @@ function QuizResult({ results, total, onRetry, onFinish }) {
             padding: "10px 20px", borderRadius: 10, border: "none",
             background: "var(--color-primary)", color: "#fff",
             cursor: "pointer", fontFamily: "var(--font-family)",
-            fontSize: 14, fontWeight: 700,
+            fontSize: 20, fontWeight: 700,
           }}
         >
           完了
@@ -463,10 +463,10 @@ export default function QuizComponent({ quizzes, sectionKey, onComplete }) {
       {/* 進捗バー */}
       <div>
         <div style={S.header}>
-          <span style={{ fontSize: 12, color: "var(--color-text-light)" }}>
+          <span style={{ fontSize: 20, color: "var(--color-text-light)" }}>
             問 {current + 1} / {total}
           </span>
-          <span style={{ fontSize: 12, color: "var(--color-text-light)" }}>
+          <span style={{ fontSize: 20, color: "var(--color-text-light)" }}>
             正解 {results.filter(Boolean).length}問
           </span>
         </div>

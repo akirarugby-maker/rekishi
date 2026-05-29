@@ -34,7 +34,7 @@ function ViewModeTabs({ mode, onChange }) {
               flex: 1, padding: "8px 4px", borderRadius: 9, border: "none",
               background: active ? "#fff" : "transparent",
               color: active ? "#A0C4FF" : "var(--color-text-light)",
-              fontFamily: "var(--font-family)", fontSize: 11, fontWeight: active ? 700 : 500,
+              fontFamily: "var(--font-family)", fontSize: 19, fontWeight: active ? 700 : 500,
               cursor: "pointer",
               boxShadow: active ? "0 1px 6px rgba(0,0,0,0.10)" : "none",
               transition: "all 0.15s",
@@ -69,14 +69,14 @@ function ProgressSummary({ progress }) {
     }}>
       <Brain size={16} color="#A0C4FF" />
       <div style={{ flex: 1 }}>
-        <div style={{ fontSize: 11, color: "var(--color-text-light)", marginBottom: 3 }}>
+        <div style={{ fontSize: 19, color: "var(--color-text-light)", marginBottom: 3 }}>
           論述対策 進捗: {done}/{items.length} セクション
         </div>
         <div style={{ height: 6, borderRadius: 999, background: "var(--color-border)", overflow: "hidden" }}>
           <div style={{ height: "100%", width: `${pct}%`, background: "#A0C4FF", borderRadius: 999, transition: "width 0.5s" }} />
         </div>
       </div>
-      <span style={{ fontSize: 12, fontWeight: 700, color: "#A0C4FF" }}>{pct}%</span>
+      <span style={{ fontSize: 20, fontWeight: 700, color: "#A0C4FF" }}>{pct}%</span>
     </div>
   );
 }
@@ -104,15 +104,15 @@ function GuideView({ progress, onUpdateData, appData }) {
               background: "#A0C4FF08", padding: "12px 14px",
             }}>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
-                <span style={{ fontSize: 13, fontWeight: 700, color: "#A0C4FF" }}>{part}</span>
+                <span style={{ fontSize: 19, fontWeight: 700, color: "#A0C4FF" }}>{part}</span>
                 <span style={{
-                  fontSize: 10, fontWeight: 600,
+                  fontSize: 20, fontWeight: 600,
                   background: "#A0C4FF25", color: "#A0C4FF",
                   padding: "2px 8px", borderRadius: 999,
                 }}>{chars}</span>
               </div>
               {points.map((pt, i) => (
-                <div key={i} style={{ display: "flex", gap: 6, fontSize: 12, color: "var(--color-text)", marginBottom: 3, alignItems: "flex-start" }}>
+                <div key={i} style={{ display: "flex", gap: 6, fontSize: 20, color: "var(--color-text)", marginBottom: 3, alignItems: "flex-start" }}>
                   <span style={{ color: "#A0C4FF", marginTop: 1 }}>•</span>
                   <span>{pt}</span>
                 </div>
@@ -129,7 +129,7 @@ function GuideView({ progress, onUpdateData, appData }) {
 
       {/* 採点基準 */}
       <SectionCard title={ronshutsuGuide.scoring.title} color="#A0C4FF">
-        <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 12 }}>
+        <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 20 }}>
           <thead>
             <tr style={{ borderBottom: "2px solid var(--color-border)" }}>
               <td style={{ padding: "6px 8px 6px 0", fontWeight: 700, color: "var(--color-text-light)", width: "28%" }}>項目</td>
@@ -142,7 +142,7 @@ function GuideView({ progress, onUpdateData, appData }) {
               <tr key={i} style={{ borderBottom: i < ronshutsuGuide.scoring.criteria.length - 1 ? "1px solid var(--color-border)" : "none" }}>
                 <td style={{ padding: "8px 8px 8px 0", fontWeight: 600, color: "var(--color-text)" }}>{item}</td>
                 <td style={{ padding: "8px 4px", textAlign: "center" }}>
-                  <span style={{ fontSize: 11, fontWeight: 700, color: "#A0C4FF", background: "#A0C4FF20", padding: "2px 6px", borderRadius: 999 }}>
+                  <span style={{ fontSize: 19, fontWeight: 700, color: "#A0C4FF", background: "#A0C4FF20", padding: "2px 6px", borderRadius: 999 }}>
                     {weight}
                   </span>
                 </td>
@@ -161,7 +161,7 @@ function GuideView({ progress, onUpdateData, appData }) {
           borderRadius: 12, border: `2px solid ${progress?.method ? "var(--color-accent)" : "#A0C4FF"}`,
           background: progress?.method ? "var(--color-accent)15" : "#A0C4FF15",
           color: progress?.method ? "var(--color-accent)" : "#A0C4FF",
-          fontFamily: "var(--font-family)", fontSize: 13, fontWeight: 700,
+          fontFamily: "var(--font-family)", fontSize: 19, fontWeight: 700,
           cursor: progress?.method ? "default" : "pointer",
           display: "flex", alignItems: "center", justifyContent: "center", gap: 8,
           marginTop: 4,
@@ -196,17 +196,17 @@ function ModelCard({ example, onSelect }) {
     >
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 8 }}>
         <div style={{ flex: 1, paddingRight: 8 }}>
-          <div style={{ fontSize: 14, fontWeight: 700, marginBottom: 4, color: "var(--color-text)" }}>
+          <div style={{ fontSize: 20, fontWeight: 700, marginBottom: 4, color: "var(--color-text)" }}>
             {example.theme}
           </div>
           <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
-            <span style={{ fontSize: 10, fontWeight: 600, color: catColor, background: catColor + "20", padding: "2px 8px", borderRadius: 999 }}>
+            <span style={{ fontSize: 20, fontWeight: 600, color: catColor, background: catColor + "20", padding: "2px 8px", borderRadius: 999 }}>
               {example.category}
             </span>
-            <span style={{ fontSize: 10, fontWeight: 600, color: diffColor, background: diffColor + "20", padding: "2px 8px", borderRadius: 999 }}>
+            <span style={{ fontSize: 20, fontWeight: 600, color: diffColor, background: diffColor + "20", padding: "2px 8px", borderRadius: 999 }}>
               {example.difficulty}
             </span>
-            <span style={{ fontSize: 10, color: "var(--color-text-light)", background: "var(--color-card-bg)", padding: "2px 8px", borderRadius: 999, border: "1px solid var(--color-border)" }}>
+            <span style={{ fontSize: 20, color: "var(--color-text-light)", background: "var(--color-card-bg)", padding: "2px 8px", borderRadius: 999, border: "1px solid var(--color-border)" }}>
               {example.wordCount}字
             </span>
           </div>
@@ -216,12 +216,12 @@ function ModelCard({ example, onSelect }) {
       {/* キーワードプレビュー */}
       <div style={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
         {example.keyPoints.slice(0, 4).map(kw => (
-          <span key={kw} style={{ fontSize: 10, color: "#A0C4FF", background: "#A0C4FF15", padding: "2px 7px", borderRadius: 999 }}>
+          <span key={kw} style={{ fontSize: 20, color: "#A0C4FF", background: "#A0C4FF15", padding: "2px 7px", borderRadius: 999 }}>
             {kw}
           </span>
         ))}
         {example.keyPoints.length > 4 && (
-          <span style={{ fontSize: 10, color: "var(--color-text-light)" }}>+{example.keyPoints.length - 4}</span>
+          <span style={{ fontSize: 20, color: "var(--color-text-light)" }}>+{example.keyPoints.length - 4}</span>
         )}
       </div>
     </button>
@@ -241,7 +241,7 @@ function ModelDetail({ example, onBack, examples, onSelect }) {
     <div className="fade-in">
       <button
         onClick={onBack}
-        style={{ background: "none", border: "none", cursor: "pointer", fontFamily: "var(--font-family)", fontSize: 13, fontWeight: 600, color: "var(--color-text-light)", display: "flex", alignItems: "center", gap: 5, marginBottom: 14, padding: 0 }}
+        style={{ background: "none", border: "none", cursor: "pointer", fontFamily: "var(--font-family)", fontSize: 19, fontWeight: 600, color: "var(--color-text-light)", display: "flex", alignItems: "center", gap: 5, marginBottom: 14, padding: 0 }}
       >
         <ChevronLeft size={16} />模範解答一覧に戻る
       </button>
@@ -253,22 +253,22 @@ function ModelDetail({ example, onBack, examples, onSelect }) {
         padding: "16px", marginBottom: 14,
       }}>
         <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginBottom: 8 }}>
-          <span style={{ fontSize: 11, fontWeight: 700, color: "#A0C4FF", background: "#A0C4FF20", padding: "2px 8px", borderRadius: 999 }}>
+          <span style={{ fontSize: 19, fontWeight: 700, color: "#A0C4FF", background: "#A0C4FF20", padding: "2px 8px", borderRadius: 999 }}>
             {example.category}
           </span>
-          <span style={{ fontSize: 11, fontWeight: 700, color: "var(--color-warning)", background: "var(--color-warning)20", padding: "2px 8px", borderRadius: 999 }}>
+          <span style={{ fontSize: 19, fontWeight: 700, color: "var(--color-warning)", background: "var(--color-warning)20", padding: "2px 8px", borderRadius: 999 }}>
             {example.difficulty}
           </span>
-          <span style={{ fontSize: 11, color: "var(--color-text-light)", background: "var(--color-card-bg)", padding: "2px 8px", borderRadius: 999, border: "1px solid var(--color-border)" }}>
+          <span style={{ fontSize: 19, color: "var(--color-text-light)", background: "var(--color-card-bg)", padding: "2px 8px", borderRadius: 999, border: "1px solid var(--color-border)" }}>
             {example.wordCount}字
           </span>
         </div>
-        <div style={{ fontSize: 17, fontWeight: 700 }}>{example.theme}</div>
+        <div style={{ fontSize: 19, fontWeight: 700 }}>{example.theme}</div>
       </div>
 
       {/* 設問 */}
       <SectionCard title="設問" color="#A0C4FF" defaultOpen>
-        <div style={{ fontSize: 13, lineHeight: 1.8, color: "var(--color-text)", fontWeight: 500 }}>
+        <div style={{ fontSize: 19, lineHeight: 1.8, color: "var(--color-text)", fontWeight: 600 }}>
           {example.question}
         </div>
       </SectionCard>
@@ -278,7 +278,7 @@ function ModelDetail({ example, onBack, examples, onSelect }) {
         <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
           {example.keyPoints.map(kw => (
             <span key={kw} style={{
-              fontSize: 12, fontWeight: 600,
+              fontSize: 20, fontWeight: 600,
               color: "#A0C4FF", background: "#A0C4FF20",
               padding: "4px 12px", borderRadius: 999,
               border: "1px solid #A0C4FF40",
@@ -292,14 +292,14 @@ function ModelDetail({ example, onBack, examples, onSelect }) {
       {/* 模範解答 */}
       <SectionCard title="模範解答" color="#A0C4FF" defaultOpen>
         <div style={{
-          fontSize: 13, lineHeight: 2, color: "var(--color-text)",
+          fontSize: 19, lineHeight: 2, color: "var(--color-text)",
           background: "#FAFBFF", borderRadius: 10,
           padding: "12px 14px",
           border: "1px solid var(--color-border)",
         }}>
           {example.modelAnswer}
         </div>
-        <div style={{ marginTop: 8, fontSize: 11, color: "var(--color-text-light)", textAlign: "right" }}>
+        <div style={{ marginTop: 8, fontSize: 19, color: "var(--color-text-light)", textAlign: "right" }}>
           {example.modelAnswer.length}字
         </div>
       </SectionCard>
@@ -316,7 +316,7 @@ function ModelDetail({ example, onBack, examples, onSelect }) {
         {prevEx ? (
           <button
             onClick={() => onSelect(prevEx)}
-            style={{ flex: 1, display: "flex", alignItems: "center", gap: 6, padding: "10px 12px", borderRadius: 10, border: "1px solid var(--color-border)", background: "#fff", cursor: "pointer", fontFamily: "var(--font-family)", fontSize: 11, fontWeight: 600, color: "var(--color-text)" }}
+            style={{ flex: 1, display: "flex", alignItems: "center", gap: 6, padding: "10px 12px", borderRadius: 10, border: "1px solid var(--color-border)", background: "#fff", cursor: "pointer", fontFamily: "var(--font-family)", fontSize: 19, fontWeight: 600, color: "var(--color-text)" }}
           >
             <ChevronLeft size={14} />
             <span style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{prevEx.theme}</span>
@@ -325,7 +325,7 @@ function ModelDetail({ example, onBack, examples, onSelect }) {
         {nextEx && (
           <button
             onClick={() => onSelect(nextEx)}
-            style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "flex-end", gap: 6, padding: "10px 12px", borderRadius: 10, border: "1px solid var(--color-border)", background: "#fff", cursor: "pointer", fontFamily: "var(--font-family)", fontSize: 11, fontWeight: 600, color: "var(--color-text)" }}
+            style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "flex-end", gap: 6, padding: "10px 12px", borderRadius: 10, border: "1px solid var(--color-border)", background: "#fff", cursor: "pointer", fontFamily: "var(--font-family)", fontSize: 19, fontWeight: 600, color: "var(--color-text)" }}
           >
             <span style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{nextEx.theme}</span>
             <ChevronRight size={14} />
@@ -368,16 +368,16 @@ function ModelsView({ progress, onUpdateData, appData }) {
 
   return (
     <div className="fade-in">
-      <div style={{ fontSize: 12, color: "var(--color-text-light)", marginBottom: 12, lineHeight: 1.7 }}>
+      <div style={{ fontSize: 20, color: "var(--color-text-light)", marginBottom: 12, lineHeight: 1.7 }}>
         全{ronshutsuExamples.length}題の模範解答を収録しています。キーワードと構成を参考にしましょう。
       </div>
 
-      <div style={{ fontSize: 11, fontWeight: 700, color: "var(--color-text-light)", marginBottom: 8, letterSpacing: "0.04em" }}>
+      <div style={{ fontSize: 19, fontWeight: 700, color: "var(--color-text-light)", marginBottom: 8, letterSpacing: "0.04em" }}>
         ── 日本史（{nihonshi.length}題）
       </div>
       {nihonshi.map(ex => <ModelCard key={ex.id} example={ex} onSelect={handleSelect} />)}
 
-      <div style={{ fontSize: 11, fontWeight: 700, color: "var(--color-text-light)", marginBottom: 8, marginTop: 8, letterSpacing: "0.04em" }}>
+      <div style={{ fontSize: 19, fontWeight: 700, color: "var(--color-text-light)", marginBottom: 8, marginTop: 8, letterSpacing: "0.04em" }}>
         ── 世界史（{sekaishi.length}題）
       </div>
       {sekaishi.map(ex => <ModelCard key={ex.id} example={ex} onSelect={handleSelect} />)}
@@ -424,15 +424,15 @@ function PracticeView({ progress, onUpdateData, appData }) {
 
   return (
     <div className="fade-in">
-      <div style={{ fontSize: 12, color: "var(--color-text-light)", marginBottom: 12, lineHeight: 1.7 }}>
+      <div style={{ fontSize: 20, color: "var(--color-text-light)", marginBottom: 12, lineHeight: 1.7 }}>
         各テーマでキーワードを使いながら論述を書く練習をしましょう。完了したらチェックを入れてください。
       </div>
 
       {/* 練習進捗 */}
       <div style={{ background: "#fff", borderRadius: 10, border: "1px solid var(--color-border)", padding: "10px 14px", marginBottom: 14 }}>
         <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 4 }}>
-          <span style={{ fontSize: 12, color: "var(--color-text-light)" }}>練習済みテーマ</span>
-          <span style={{ fontSize: 12, fontWeight: 700, color: "#A0C4FF" }}>{doneCount}/{totalThemes}</span>
+          <span style={{ fontSize: 20, color: "var(--color-text-light)" }}>練習済みテーマ</span>
+          <span style={{ fontSize: 20, fontWeight: 700, color: "#A0C4FF" }}>{doneCount}/{totalThemes}</span>
         </div>
         <div style={{ height: 5, borderRadius: 999, background: "var(--color-border)", overflow: "hidden" }}>
           <div style={{ height: "100%", width: `${(doneCount / totalThemes) * 100}%`, background: "#A0C4FF", borderRadius: 999, transition: "width 0.3s" }} />
@@ -450,7 +450,7 @@ function PracticeView({ progress, onUpdateData, appData }) {
               background: color + "15", marginBottom: 8,
             }}>
               <div style={{ width: 7, height: 7, borderRadius: "50%", background: color }} />
-              <span style={{ fontSize: 12, fontWeight: 700 }}>{CATEGORY_LABELS[catKey]}</span>
+              <span style={{ fontSize: 20, fontWeight: 700 }}>{CATEGORY_LABELS[catKey]}</span>
             </div>
             {themes.map(theme => (
               <div
@@ -463,7 +463,7 @@ function PracticeView({ progress, onUpdateData, appData }) {
                 }}
               >
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 8 }}>
-                  <span style={{ fontSize: 13, fontWeight: 700, color: "var(--color-text)", flex: 1, paddingRight: 8 }}>
+                  <span style={{ fontSize: 19, fontWeight: 700, color: "var(--color-text)", flex: 1, paddingRight: 8 }}>
                     {theme.title}
                   </span>
                   <button
@@ -474,7 +474,7 @@ function PracticeView({ progress, onUpdateData, appData }) {
                       border: `1.5px solid ${practiced[theme.id] ? "var(--color-accent)" : "var(--color-border)"}`,
                       background: practiced[theme.id] ? "var(--color-accent)15" : "#fff",
                       color: practiced[theme.id] ? "var(--color-accent)" : "var(--color-text-light)",
-                      fontFamily: "var(--font-family)", fontSize: 11, fontWeight: 600,
+                      fontFamily: "var(--font-family)", fontSize: 19, fontWeight: 600,
                       cursor: "pointer", flexShrink: 0,
                     }}
                   >
@@ -486,7 +486,7 @@ function PracticeView({ progress, onUpdateData, appData }) {
                 <div style={{ display: "flex", flexWrap: "wrap", gap: 5 }}>
                   {theme.keywords.map(kw => (
                     <span key={kw} style={{
-                      fontSize: 11, fontWeight: 600,
+                      fontSize: 19, fontWeight: 600,
                       color, background: color + "20",
                       padding: "2px 8px", borderRadius: 999,
                     }}>
@@ -523,13 +523,13 @@ export default function RonshutsuTab({ appData, onUpdateData, onNavigate }) {
       }}>
         <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4 }}>
           <Brain size={18} color="#A0C4FF" />
-          <span style={{ fontSize: 15, fontWeight: 700 }}>論述対策タブ</span>
+          <span style={{ fontSize: 19, fontWeight: 700 }}>論述対策タブ</span>
           <span style={{
-            fontSize: 10, fontWeight: 700, color: "var(--color-warning)",
+            fontSize: 20, fontWeight: 700, color: "var(--color-warning)",
             background: "var(--color-warning)20", padding: "2px 8px", borderRadius: 999,
           }}>1級専用</span>
         </div>
-        <div style={{ fontSize: 12, color: "var(--color-text-light)", lineHeight: 1.7 }}>
+        <div style={{ fontSize: 20, color: "var(--color-text-light)", lineHeight: 1.7 }}>
           論述の書き方・採点基準・模範解答（7題）・練習テーマで記述力を鍛えましょう。
         </div>
       </div>

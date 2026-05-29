@@ -113,8 +113,8 @@ function SummaryCards({ history }) {
           padding: "12px 14px",
           boxShadow: "var(--shadow-sm)",
         }}>
-          <div style={{ fontSize: 10, color: "var(--color-text-light)", marginBottom: 4 }}>{label}</div>
-          <div style={{ fontSize: 18, fontWeight: 700, color }}>{value}</div>
+          <div style={{ fontSize: 20, color: "var(--color-text-light)", marginBottom: 4 }}>{label}</div>
+          <div style={{ fontSize: 20, fontWeight: 700, color }}>{value}</div>
         </div>
       ))}
     </div>
@@ -140,12 +140,12 @@ function RadarSection({ tabAvg }) {
       padding: "14px", marginBottom: 12,
       boxShadow: "var(--shadow-sm)",
     }}>
-      <div style={{ fontSize: 13, fontWeight: 700, marginBottom: 12, display: "flex", alignItems: "center", gap: 6 }}>
+      <div style={{ fontSize: 19, fontWeight: 700, marginBottom: 12, display: "flex", alignItems: "center", gap: 6 }}>
         <TrendingUp size={15} color="var(--color-primary)" />
         タブ別 平均正解率
       </div>
       {!hasData ? (
-        <div style={{ textAlign: "center", padding: "24px", color: "var(--color-text-light)", fontSize: 12 }}>
+        <div style={{ textAlign: "center", padding: "24px", color: "var(--color-text-light)", fontSize: 20 }}>
           各タブのテストを受けるとレーダーチャートが表示されます
         </div>
       ) : (
@@ -154,10 +154,10 @@ function RadarSection({ tabAvg }) {
             <PolarGrid stroke="var(--color-border)" />
             <PolarAngleAxis
               dataKey="subject"
-              tick={{ fontSize: 11, fontFamily: "var(--font-family)", fill: "var(--color-text)" }}
+              tick={{ fontSize: 19, fontFamily: "var(--font-family)", fill: "var(--color-text)" }}
             />
             <PolarRadiusAxis
-              domain={[0, 100]} tick={{ fontSize: 9, fill: "var(--color-text-light)" }}
+              domain={[0, 100]} tick={{ fontSize: 19, fill: "var(--color-text-light)" }}
               tickCount={4}
             />
             <Radar
@@ -166,7 +166,7 @@ function RadarSection({ tabAvg }) {
             />
             <ReTooltip
               formatter={(v) => [`${v}%`, "平均正解率"]}
-              contentStyle={{ fontFamily: "var(--font-family)", fontSize: 12, borderRadius: 8 }}
+              contentStyle={{ fontFamily: "var(--font-family)", fontSize: 20, borderRadius: 8 }}
             />
           </RadarChart>
         </ResponsiveContainer>
@@ -197,7 +197,7 @@ function BarSection({ sectionAvg }) {
       padding: "14px", marginBottom: 12,
       boxShadow: "var(--shadow-sm)",
     }}>
-      <div style={{ fontSize: 13, fontWeight: 700, marginBottom: 10, display: "flex", alignItems: "center", gap: 6 }}>
+      <div style={{ fontSize: 19, fontWeight: 700, marginBottom: 10, display: "flex", alignItems: "center", gap: 6 }}>
         <BarChart2 size={15} color="var(--color-secondary)" />
         セクション別 正解率
       </div>
@@ -213,7 +213,7 @@ function BarSection({ sectionAvg }) {
               border: `1.5px solid ${selectedTab === k ? TAB_META[k].color : "var(--color-border)"}`,
               background: selectedTab === k ? TAB_META[k].color + "20" : "#fff",
               color: selectedTab === k ? TAB_META[k].color : "var(--color-text-light)",
-              fontFamily: "var(--font-family)", fontSize: 11, fontWeight: selectedTab === k ? 700 : 500,
+              fontFamily: "var(--font-family)", fontSize: 19, fontWeight: selectedTab === k ? 700 : 500,
               cursor: "pointer", flexShrink: 0, transition: "all 0.15s",
             }}
           >
@@ -224,7 +224,7 @@ function BarSection({ sectionAvg }) {
 
       {/* 棒グラフ */}
       {data.length === 0 ? (
-        <div style={{ textAlign: "center", padding: "20px", color: "var(--color-text-light)", fontSize: 12 }}>
+        <div style={{ textAlign: "center", padding: "20px", color: "var(--color-text-light)", fontSize: 20 }}>
           このタブのテスト履歴がありません
         </div>
       ) : (
@@ -232,11 +232,11 @@ function BarSection({ sectionAvg }) {
           <ResponsiveContainer width="100%" height={Math.max(180, data.length * 36)}>
             <BarChart data={data} layout="vertical" margin={{ left: 4, right: 24, top: 0, bottom: 0 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="var(--color-border)" horizontal={false} />
-              <XAxis type="number" domain={[0, 100]} tick={{ fontSize: 10, fill: "var(--color-text-light)" }} tickFormatter={v => `${v}%`} />
-              <YAxis type="category" dataKey="name" tick={{ fontSize: 11, fontFamily: "var(--font-family)", fill: "var(--color-text)" }} width={70} />
+              <XAxis type="number" domain={[0, 100]} tick={{ fontSize: 20, fill: "var(--color-text-light)" }} tickFormatter={v => `${v}%`} />
+              <YAxis type="category" dataKey="name" tick={{ fontSize: 19, fontFamily: "var(--font-family)", fill: "var(--color-text)" }} width={70} />
               <ReTooltip
                 formatter={(v) => [`${v}%`, "平均正解率"]}
-                contentStyle={{ fontFamily: "var(--font-family)", fontSize: 12, borderRadius: 8 }}
+                contentStyle={{ fontFamily: "var(--font-family)", fontSize: 20, borderRadius: 8 }}
               />
               <Bar dataKey="pct" radius={[0, 4, 4, 0]}>
                 {data.map((entry, i) => (
@@ -256,7 +256,7 @@ function BarSection({ sectionAvg }) {
               { label: "合格（60%+）", color: selectedColor },
               { label: "要復習（〜60%）", color: "var(--color-warning)" },
             ].map(({ label, color }) => (
-              <div key={label} style={{ display: "flex", alignItems: "center", gap: 4, fontSize: 10, color: "var(--color-text-light)" }}>
+              <div key={label} style={{ display: "flex", alignItems: "center", gap: 4, fontSize: 20, color: "var(--color-text-light)" }}>
                 <div style={{ width: 8, height: 8, borderRadius: 2, background: color }} />
                 {label}
               </div>
@@ -284,10 +284,10 @@ function WeakList({ sectionAvg }) {
         border: "1px solid var(--color-accent)40",
         padding: "16px", textAlign: "center", marginBottom: 12,
       }}>
-        <div style={{ fontSize: 13, fontWeight: 700, color: "var(--color-accent)", marginBottom: 4 }}>
+        <div style={{ fontSize: 19, fontWeight: 700, color: "var(--color-accent)", marginBottom: 4 }}>
           苦手分野なし！
         </div>
-        <div style={{ fontSize: 12, color: "var(--color-text-light)" }}>
+        <div style={{ fontSize: 20, color: "var(--color-text-light)" }}>
           受験済みのすべてのセクションで60%以上を達成しています
         </div>
       </div>
@@ -301,7 +301,7 @@ function WeakList({ sectionAvg }) {
       padding: "14px", marginBottom: 12,
       boxShadow: "var(--shadow-sm)",
     }}>
-      <div style={{ fontSize: 13, fontWeight: 700, marginBottom: 10, display: "flex", alignItems: "center", gap: 6 }}>
+      <div style={{ fontSize: 19, fontWeight: 700, marginBottom: 10, display: "flex", alignItems: "center", gap: 6 }}>
         <AlertCircle size={15} color="var(--color-warning)" />
         要復習ランキング（正解率60%未満）
       </div>
@@ -315,22 +315,22 @@ function WeakList({ sectionAvg }) {
             width: 22, height: 22, borderRadius: "50%",
             background: i === 0 ? "var(--color-warning)30" : "var(--color-border)",
             display: "flex", alignItems: "center", justifyContent: "center",
-            fontSize: 11, fontWeight: 700, color: i === 0 ? "var(--color-warning)" : "var(--color-text-light)",
+            fontSize: 19, fontWeight: 700, color: i === 0 ? "var(--color-warning)" : "var(--color-text-light)",
             flexShrink: 0,
           }}>
             {i + 1}
           </div>
           <div style={{ flex: 1, minWidth: 0 }}>
-            <div style={{ fontSize: 12, fontWeight: 700, color: "var(--color-text)", marginBottom: 2, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+            <div style={{ fontSize: 20, fontWeight: 700, color: "var(--color-text)", marginBottom: 2, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
               {s.label}
             </div>
-            <div style={{ fontSize: 10, color: s.color }}>
+            <div style={{ fontSize: 20, color: s.color }}>
               {s.tabLabel} ・ {s.count}回受験
             </div>
           </div>
           <div style={{ flexShrink: 0 }}>
             <span style={{
-              fontSize: 14, fontWeight: 700,
+              fontSize: 20, fontWeight: 700,
               color: s.avg < 40 ? "var(--color-warning)" : "var(--color-secondary)",
             }}>
               {s.avg}%
@@ -345,7 +345,7 @@ function WeakList({ sectionAvg }) {
       {weak.length > 5 && (
         <button
           onClick={() => setShowAll(f => !f)}
-          style={{ width: "100%", padding: "8px", background: "none", border: "none", cursor: "pointer", fontFamily: "var(--font-family)", fontSize: 12, color: "var(--color-text-light)", display: "flex", alignItems: "center", justifyContent: "center", gap: 4, marginTop: 4 }}
+          style={{ width: "100%", padding: "8px", background: "none", border: "none", cursor: "pointer", fontFamily: "var(--font-family)", fontSize: 20, color: "var(--color-text-light)", display: "flex", alignItems: "center", justifyContent: "center", gap: 4, marginTop: 4 }}
         >
           {showAll ? <><ChevronUp size={14} />閉じる</> : <><ChevronDown size={14} />残り{weak.length - 5}件を表示</>}
         </button>
@@ -370,7 +370,7 @@ function HistoryList({ history }) {
       padding: "14px", marginBottom: 12,
       boxShadow: "var(--shadow-sm)",
     }}>
-      <div style={{ fontSize: 13, fontWeight: 700, marginBottom: 10, display: "flex", alignItems: "center", gap: 6 }}>
+      <div style={{ fontSize: 19, fontWeight: 700, marginBottom: 10, display: "flex", alignItems: "center", gap: 6 }}>
         <Clock size={15} color="var(--color-text-light)" />
         テスト履歴（全{history.length}件）
       </div>
@@ -387,20 +387,20 @@ function HistoryList({ history }) {
             borderBottom: i < shown.length - 1 ? "1px solid var(--color-border)" : "none",
           }}>
             <div style={{ flex: 1, minWidth: 0 }}>
-              <div style={{ fontSize: 12, fontWeight: 600, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+              <div style={{ fontSize: 20, fontWeight: 600, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
                 {label}
               </div>
               <div style={{ display: "flex", gap: 6, marginTop: 2 }}>
-                <span style={{ fontSize: 10, color: tabColor, fontWeight: 600 }}>
+                <span style={{ fontSize: 20, color: tabColor, fontWeight: 600 }}>
                   {TAB_META[h.tab]?.shortLabel || h.tab}
                 </span>
-                <span style={{ fontSize: 10, color: "var(--color-text-light)" }}>{h.date}</span>
+                <span style={{ fontSize: 20, color: "var(--color-text-light)" }}>{h.date}</span>
               </div>
             </div>
             <div style={{ flexShrink: 0, textAlign: "right" }}>
-              <span style={{ fontSize: 13, fontWeight: 700 }}>{h.score}/{h.total}</span>
+              <span style={{ fontSize: 19, fontWeight: 700 }}>{h.score}/{h.total}</span>
               <span style={{
-                display: "block", fontSize: 10, fontWeight: 700,
+                display: "block", fontSize: 20, fontWeight: 700,
                 color: gradeColor,
               }}>{grade}</span>
             </div>
@@ -410,7 +410,7 @@ function HistoryList({ history }) {
       {history.length > 8 && (
         <button
           onClick={() => setShowAll(f => !f)}
-          style={{ width: "100%", padding: "8px", background: "none", border: "none", cursor: "pointer", fontFamily: "var(--font-family)", fontSize: 12, color: "var(--color-text-light)", display: "flex", alignItems: "center", justifyContent: "center", gap: 4, marginTop: 4 }}
+          style={{ width: "100%", padding: "8px", background: "none", border: "none", cursor: "pointer", fontFamily: "var(--font-family)", fontSize: 20, color: "var(--color-text-light)", display: "flex", alignItems: "center", justifyContent: "center", gap: 4, marginTop: 4 }}
         >
           {showAll ? <><ChevronUp size={14} />閉じる</> : <><ChevronDown size={14} />もっと見る</>}
         </button>
@@ -431,8 +431,8 @@ function EmptyState({ onNavigate }) {
       padding: "40px 24px", textAlign: "center",
     }}>
       <BarChart2 size={52} color="var(--color-border)" style={{ marginBottom: 16 }} />
-      <div style={{ fontSize: 16, fontWeight: 700, marginBottom: 8 }}>テスト結果がまだありません</div>
-      <div style={{ fontSize: 13, color: "var(--color-text-light)", lineHeight: 1.8, marginBottom: 20 }}>
+      <div style={{ fontSize: 20, fontWeight: 700, marginBottom: 8 }}>テスト結果がまだありません</div>
+      <div style={{ fontSize: 19, color: "var(--color-text-light)", lineHeight: 1.8, marginBottom: 20 }}>
         各タブで理解度テストを受けると<br />
         ここに苦手分析が表示されます。
       </div>
@@ -442,7 +442,7 @@ function EmptyState({ onNavigate }) {
           padding: "12px 24px", borderRadius: 12,
           border: "none", background: "var(--color-accent)",
           color: "#fff", fontFamily: "var(--font-family)",
-          fontSize: 13, fontWeight: 700, cursor: "pointer",
+          fontSize: 19, fontWeight: 700, cursor: "pointer",
         }}
       >
         日本史タブでテストを受ける
@@ -487,9 +487,9 @@ export default function NigateTab({ appData, onUpdateData, onNavigate }) {
       }}>
         <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4 }}>
           <BarChart2 size={18} color="#B5EAD7" />
-          <span style={{ fontSize: 15, fontWeight: 700 }}>苦手分析タブ</span>
+          <span style={{ fontSize: 19, fontWeight: 700 }}>苦手分析タブ</span>
         </div>
-        <div style={{ fontSize: 12, color: "var(--color-text-light)", lineHeight: 1.7 }}>
+        <div style={{ fontSize: 20, color: "var(--color-text-light)", lineHeight: 1.7 }}>
           テスト結果を自動集計し、苦手分野を可視化します。
         </div>
       </div>

@@ -77,7 +77,7 @@ function FilterChip({ label, active, onClick, color }) {
         borderColor: active ? (color || "var(--color-accent)") : "var(--color-border)",
         background: active ? (color || "var(--color-accent)") + "20" : "#fff",
         color: active ? (color || "var(--color-accent)") : "var(--color-text-light)",
-        fontFamily: "var(--font-family)", fontSize: 12, fontWeight: active ? 700 : 500,
+        fontFamily: "var(--font-family)", fontSize: 20, fontWeight: active ? 700 : 500,
         cursor: "pointer", flexShrink: 0, transition: "all 0.15s",
       }}
     >
@@ -112,7 +112,7 @@ function ViewModeTabs({ mode, onChange }) {
               padding: "8px 0", borderRadius: 9, border: "none",
               background: active ? "#fff" : "transparent",
               color: active ? "var(--color-accent)" : "var(--color-text-light)",
-              fontFamily: "var(--font-family)", fontSize: 12, fontWeight: active ? 700 : 500,
+              fontFamily: "var(--font-family)", fontSize: 20, fontWeight: active ? 700 : 500,
               cursor: "pointer",
               boxShadow: active ? "0 1px 6px rgba(0,0,0,0.10)" : "none",
               transition: "all 0.15s",
@@ -143,14 +143,14 @@ function ProgressSummary({ progress }) {
     }}>
       <Scroll size={16} color="var(--color-accent)" />
       <div style={{ flex: 1 }}>
-        <div style={{ fontSize: 11, color: "var(--color-text-light)", marginBottom: 3 }}>
+        <div style={{ fontSize: 19, color: "var(--color-text-light)", marginBottom: 3 }}>
           日本史 進捗: {done}/{total} 時代
         </div>
         <div style={{ height: 6, borderRadius: 999, background: "var(--color-border)", overflow: "hidden" }}>
           <div style={{ height: "100%", width: `${pct}%`, background: "var(--color-accent)", borderRadius: 999, transition: "width 0.5s" }} />
         </div>
       </div>
-      <span style={{ fontSize: 12, fontWeight: 700, color: "var(--color-accent)" }}>{pct}%</span>
+      <span style={{ fontSize: 20, fontWeight: 700, color: "var(--color-accent)" }}>{pct}%</span>
     </div>
   );
 }
@@ -164,7 +164,7 @@ function EraSelector({ selectedId, onSelect }) {
     <div style={{ marginBottom: 14 }}>
       {ERA_GROUPS.map(group => (
         <div key={group.label} style={{ marginBottom: 6 }}>
-          <div style={{ fontSize: 10, fontWeight: 700, color: "var(--color-text-light)", marginBottom: 4 }}>
+          <div style={{ fontSize: 20, fontWeight: 700, color: "var(--color-text-light)", marginBottom: 4 }}>
             {group.label}
           </div>
           <div style={{ display: "flex", gap: 5, overflowX: "auto", scrollbarWidth: "none" }}>
@@ -186,7 +186,7 @@ function EraSelector({ selectedId, onSelect }) {
                     flexShrink: 0, minWidth: 58, transition: "all 0.15s",
                   }}
                 >
-                  <span style={{ fontSize: 12, fontWeight: active ? 700 : 500, color: active ? "var(--color-text)" : "var(--color-text-light)" }}>
+                  <span style={{ fontSize: 20, fontWeight: active ? 700 : 500, color: active ? "var(--color-text)" : "var(--color-text-light)" }}>
                     {era.name.replace("時代", "")}
                   </span>
                 </button>
@@ -213,7 +213,7 @@ function EraListView({ progress, onSelect }) {
         {ERA_GROUPS.map(group => (
           <div key={group.label}>
             <div style={{
-              fontSize: 11, fontWeight: 700, color: "var(--color-text-light)",
+              fontSize: 19, fontWeight: 700, color: "var(--color-text-light)",
               letterSpacing: "0.05em", marginBottom: 6, marginTop: 4,
             }}>
               ── {group.label}
@@ -247,17 +247,17 @@ function EraListView({ progress, onSelect }) {
                     <Scroll size={16} color={color || "#666"} />
                   </div>
                   <div style={{ flex: 1, minWidth: 0 }}>
-                    <div style={{ fontSize: 14, fontWeight: 700, marginBottom: 2 }}>{era.name}</div>
-                    <div style={{ fontSize: 11, color: "var(--color-text-light)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+                    <div style={{ fontSize: 20, fontWeight: 700, marginBottom: 2 }}>{era.name}</div>
+                    <div style={{ fontSize: 19, color: "var(--color-text-light)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
                       {era.period}
                     </div>
                   </div>
                   <div style={{ flexShrink: 0, textAlign: "right" }}>
-                    <div style={{ fontSize: 10, color: "var(--color-text-light)" }}>{"★".repeat(era.difficulty || 1)}</div>
-                    <div style={{ fontSize: 10, color: "var(--color-text-light)", marginTop: 2 }}>{quizCount}問</div>
+                    <div style={{ fontSize: 20, color: "var(--color-text-light)" }}>{"★".repeat(era.difficulty || 1)}</div>
+                    <div style={{ fontSize: 20, color: "var(--color-text-light)", marginTop: 2 }}>{quizCount}問</div>
                   </div>
                   {done
-                    ? <span style={{ fontSize: 13, color: "var(--color-accent)", fontWeight: 700, flexShrink: 0 }}>✓</span>
+                    ? <span style={{ fontSize: 19, color: "var(--color-accent)", fontWeight: 700, flexShrink: 0 }}>✓</span>
                     : <ChevronRight size={14} color="var(--color-text-light)" style={{ flexShrink: 0 }} />
                   }
                 </button>
@@ -310,7 +310,7 @@ function EraDetail({ eraId, appData, onUpdateData, onBack }) {
     if (quizzes.length === 0) {
       return (
         <div>
-          <button onClick={() => setShowQuiz(false)} style={{ background: "none", border: "none", cursor: "pointer", color, fontFamily: "var(--font-family)", fontSize: 13, fontWeight: 600, display: "flex", alignItems: "center", gap: 5, marginBottom: 16 }}>
+          <button onClick={() => setShowQuiz(false)} style={{ background: "none", border: "none", cursor: "pointer", color, fontFamily: "var(--font-family)", fontSize: 19, fontWeight: 600, display: "flex", alignItems: "center", gap: 5, marginBottom: 16 }}>
             <ChevronLeft size={16} />戻る
           </button>
           <div style={{ padding: "32px", textAlign: "center", color: "var(--color-text-light)" }}>この時代のテスト問題は準備中です</div>
@@ -319,7 +319,7 @@ function EraDetail({ eraId, appData, onUpdateData, onBack }) {
     }
     return (
       <div className="fade-in">
-        <button onClick={() => setShowQuiz(false)} style={{ background: "none", border: "none", cursor: "pointer", color, fontFamily: "var(--font-family)", fontSize: 13, fontWeight: 600, display: "flex", alignItems: "center", gap: 5, marginBottom: 16, padding: 0 }}>
+        <button onClick={() => setShowQuiz(false)} style={{ background: "none", border: "none", cursor: "pointer", color, fontFamily: "var(--font-family)", fontSize: 19, fontWeight: 600, display: "flex", alignItems: "center", gap: 5, marginBottom: 16, padding: 0 }}>
           <ChevronLeft size={16} />{era.name}に戻る
         </button>
         <QuizComponent quizzes={quizzes} sectionKey={eraId} onComplete={handleQuizComplete} />
@@ -331,7 +331,7 @@ function EraDetail({ eraId, appData, onUpdateData, onBack }) {
     <div className="fade-in">
       <button
         onClick={onBack}
-        style={{ background: "none", border: "none", cursor: "pointer", color: "var(--color-text-light)", fontFamily: "var(--font-family)", fontSize: 13, fontWeight: 600, display: "flex", alignItems: "center", gap: 5, marginBottom: 14, padding: 0 }}
+        style={{ background: "none", border: "none", cursor: "pointer", color: "var(--color-text-light)", fontFamily: "var(--font-family)", fontSize: 19, fontWeight: 600, display: "flex", alignItems: "center", gap: 5, marginBottom: 14, padding: 0 }}
       >
         <ChevronLeft size={16} />時代一覧に戻る
       </button>
@@ -345,11 +345,11 @@ function EraDetail({ eraId, appData, onUpdateData, onBack }) {
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
           <div>
             <div style={{ fontSize: 22, fontWeight: 700, marginBottom: 4 }}>{era.name}</div>
-            <div style={{ fontSize: 13, color: "var(--color-text-light)" }}>{era.period}</div>
+            <div style={{ fontSize: 19, color: "var(--color-text-light)" }}>{era.period}</div>
           </div>
           <div style={{ textAlign: "right" }}>
-            {done && <div style={{ fontSize: 13, fontWeight: 700, color: "var(--color-accent)" }}>✓ 完了済み</div>}
-            <div style={{ fontSize: 11, color: "var(--color-text-light)", marginTop: 4, fontStyle: "italic" }}>
+            {done && <div style={{ fontSize: 19, fontWeight: 700, color: "var(--color-accent)" }}>✓ 完了済み</div>}
+            <div style={{ fontSize: 19, color: "var(--color-text-light)", marginTop: 4, fontStyle: "italic" }}>
               {era.culture}
             </div>
           </div>
@@ -412,12 +412,12 @@ function EraDetail({ eraId, appData, onUpdateData, onBack }) {
               }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
                   <Clock size={12} color="var(--color-text-light)" />
-                  <span style={{ fontSize: 12, color: "var(--color-text-light)" }}>{h.date}</span>
+                  <span style={{ fontSize: 20, color: "var(--color-text-light)" }}>{h.date}</span>
                 </div>
                 <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                  <span style={{ fontSize: 13, fontWeight: 600 }}>{h.score}/{h.total}</span>
+                  <span style={{ fontSize: 19, fontWeight: 600 }}>{h.score}/{h.total}</span>
                   <span style={{
-                    fontSize: 11, fontWeight: 700,
+                    fontSize: 19, fontWeight: 700,
                     color: gradeColor,
                     background: gradeColor + "20",
                     padding: "2px 8px", borderRadius: 999,
@@ -440,8 +440,8 @@ function EraDetail({ eraId, appData, onUpdateData, onBack }) {
         border: "1px solid var(--color-border)",
         padding: "16px", textAlign: "center", marginTop: 8,
       }}>
-        <div style={{ fontSize: 14, fontWeight: 700, marginBottom: 6 }}>{era.name} 理解度テスト</div>
-        <div style={{ fontSize: 12, color: "var(--color-text-light)", marginBottom: 12 }}>
+        <div style={{ fontSize: 20, fontWeight: 700, marginBottom: 6 }}>{era.name} 理解度テスト</div>
+        <div style={{ fontSize: 20, color: "var(--color-text-light)", marginBottom: 12 }}>
           {quizzes.length > 0 ? `${quizzes.length}問 / 60%以上で完了チェック` : "テスト問題を準備中です"}
         </div>
         <button
@@ -452,7 +452,7 @@ function EraDetail({ eraId, appData, onUpdateData, onBack }) {
             borderRadius: 12, border: "none",
             background: quizzes.length > 0 ? color : "var(--color-border)",
             color: "#fff",
-            fontFamily: "var(--font-family)", fontSize: 14, fontWeight: 700,
+            fontFamily: "var(--font-family)", fontSize: 20, fontWeight: 700,
             cursor: quizzes.length > 0 ? "pointer" : "default",
             opacity: quizzes.length > 0 ? 1 : 0.6,
           }}
@@ -478,7 +478,7 @@ function EraPager({ currentId, onSelect }) {
       {prevId ? (
         <button
           onClick={() => onSelect(prevId)}
-          style={{ flex: 1, display: "flex", alignItems: "center", gap: 6, padding: "10px 12px", borderRadius: 10, border: "1px solid var(--color-border)", background: "#fff", cursor: "pointer", fontFamily: "var(--font-family)", fontSize: 12, fontWeight: 600, color: "var(--color-text)" }}
+          style={{ flex: 1, display: "flex", alignItems: "center", gap: 6, padding: "10px 12px", borderRadius: 10, border: "1px solid var(--color-border)", background: "#fff", cursor: "pointer", fontFamily: "var(--font-family)", fontSize: 20, fontWeight: 600, color: "var(--color-text)" }}
         >
           <ChevronLeft size={14} />
           <span>{nihonshiDataAll[prevId]?.name}</span>
@@ -487,7 +487,7 @@ function EraPager({ currentId, onSelect }) {
       {nextId && (
         <button
           onClick={() => onSelect(nextId)}
-          style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "flex-end", gap: 6, padding: "10px 12px", borderRadius: 10, border: "1px solid var(--color-border)", background: "#fff", cursor: "pointer", fontFamily: "var(--font-family)", fontSize: 12, fontWeight: 600, color: "var(--color-text)" }}
+          style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "flex-end", gap: 6, padding: "10px 12px", borderRadius: 10, border: "1px solid var(--color-border)", background: "#fff", cursor: "pointer", fontFamily: "var(--font-family)", fontSize: 20, fontWeight: 600, color: "var(--color-text)" }}
         >
           <span>{nihonshiDataAll[nextId]?.name}</span>
           <ChevronRight size={14} />
@@ -519,7 +519,7 @@ function FigureGallery() {
       </div>
 
       {/* 人数バッジ */}
-      <div style={{ fontSize: 12, color: "var(--color-text-light)", marginBottom: 10 }}>
+      <div style={{ fontSize: 20, color: "var(--color-text-light)", marginBottom: 10 }}>
         {filtered.length}名
       </div>
 
@@ -535,7 +535,7 @@ function FigureGallery() {
           return (
             <div key={name}>
               <div style={{
-                fontSize: 10, fontWeight: 700, color, marginBottom: 4, marginTop: 4,
+                fontSize: 20, fontWeight: 700, color, marginBottom: 4, marginTop: 4,
                 display: "flex", alignItems: "center", gap: 4,
               }}>
                 <div style={{ width: 6, height: 6, borderRadius: "50%", background: color }} />
@@ -568,11 +568,11 @@ function FlashcardStudy() {
           background: "linear-gradient(135deg, #E8F5E9, #E3F2FD)",
           borderRadius: 14, padding: "14px 16px", marginBottom: 14,
         }}>
-          <div style={{ fontSize: 14, fontWeight: 700, marginBottom: 4 }}>
+          <div style={{ fontSize: 20, fontWeight: 700, marginBottom: 4 }}>
             <BookOpen size={15} style={{ verticalAlign: "middle", marginRight: 6 }} />
             単語帳で学習
           </div>
-          <div style={{ fontSize: 12, color: "var(--color-text-light)", lineHeight: 1.7 }}>
+          <div style={{ fontSize: 20, color: "var(--color-text-light)", lineHeight: 1.7 }}>
             年表の出来事をフラッシュカードで暗記できます。<br />
             学習したい時代を選んでください。
           </div>
@@ -580,7 +580,7 @@ function FlashcardStudy() {
 
         {ERA_GROUPS.map(group => (
           <div key={group.label} style={{ marginBottom: 10 }}>
-            <div style={{ fontSize: 11, fontWeight: 700, color: "var(--color-text-light)", marginBottom: 6 }}>
+            <div style={{ fontSize: 19, fontWeight: 700, color: "var(--color-text-light)", marginBottom: 6 }}>
               ── {group.label}
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
@@ -605,9 +605,9 @@ function FlashcardStudy() {
                   >
                     <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                       <div style={{ width: 8, height: 8, borderRadius: "50%", background: color, flexShrink: 0 }} />
-                      <span style={{ fontSize: 13, fontWeight: 600, color: "var(--color-text)" }}>{era.name}</span>
+                      <span style={{ fontSize: 19, fontWeight: 600, color: "var(--color-text)" }}>{era.name}</span>
                     </div>
-                    <span style={{ fontSize: 11, color: "var(--color-text-light)" }}>
+                    <span style={{ fontSize: 19, color: "var(--color-text-light)" }}>
                       {events.length > 0 ? `${events.length}枚` : "データなし"}
                     </span>
                   </button>
@@ -633,21 +633,21 @@ function FlashcardStudy() {
           borderRadius: 20, padding: "32px 24px", marginBottom: 20,
         }}>
           <CheckCircle size={48} color="var(--color-accent)" style={{ marginBottom: 14 }} />
-          <div style={{ fontSize: 18, fontWeight: 700, marginBottom: 8 }}>完了！</div>
-          <div style={{ fontSize: 14, color: "var(--color-text-light)", marginBottom: 4 }}>
+          <div style={{ fontSize: 20, fontWeight: 700, marginBottom: 8 }}>完了！</div>
+          <div style={{ fontSize: 20, color: "var(--color-text-light)", marginBottom: 4 }}>
             {era.name}の年表 {events.length}枚を学習しました
           </div>
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
           <button
             onClick={() => { setCardIndex(0); setFlipped(false); }}
-            style={{ padding: "13px", borderRadius: 12, border: "none", background: color, color: "#fff", fontFamily: "var(--font-family)", fontSize: 14, fontWeight: 700, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 8 }}
+            style={{ padding: "13px", borderRadius: 12, border: "none", background: color, color: "#fff", fontFamily: "var(--font-family)", fontSize: 20, fontWeight: 700, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 8 }}
           >
             <RotateCcw size={16} />もう一度
           </button>
           <button
             onClick={() => setStudyEraId(null)}
-            style={{ padding: "13px", borderRadius: 12, border: "1px solid var(--color-border)", background: "#fff", fontFamily: "var(--font-family)", fontSize: 13, fontWeight: 600, cursor: "pointer", color: "var(--color-text-light)" }}
+            style={{ padding: "13px", borderRadius: 12, border: "1px solid var(--color-border)", background: "#fff", fontFamily: "var(--font-family)", fontSize: 19, fontWeight: 600, cursor: "pointer", color: "var(--color-text-light)" }}
           >
             時代選択に戻る
           </button>
@@ -668,12 +668,12 @@ function FlashcardStudy() {
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 12 }}>
         <button
           onClick={() => setStudyEraId(null)}
-          style={{ background: "none", border: "none", cursor: "pointer", fontFamily: "var(--font-family)", fontSize: 12, fontWeight: 600, color: "var(--color-text-light)", display: "flex", alignItems: "center", gap: 4, padding: 0 }}
+          style={{ background: "none", border: "none", cursor: "pointer", fontFamily: "var(--font-family)", fontSize: 20, fontWeight: 600, color: "var(--color-text-light)", display: "flex", alignItems: "center", gap: 4, padding: 0 }}
         >
           <ChevronLeft size={14} />時代選択
         </button>
-        <span style={{ fontSize: 13, fontWeight: 700, color }}>{era.name}</span>
-        <span style={{ fontSize: 12, color: "var(--color-text-light)" }}>
+        <span style={{ fontSize: 19, fontWeight: 700, color }}>{era.name}</span>
+        <span style={{ fontSize: 20, color: "var(--color-text-light)" }}>
           {cardIndex + 1} / {events.length}
         </span>
       </div>
@@ -691,7 +691,7 @@ function FlashcardStudy() {
               flex: 1, padding: "7px", borderRadius: 7, border: "none",
               background: direction === opt.id ? "#fff" : "transparent",
               color: direction === opt.id ? color : "var(--color-text-light)",
-              fontFamily: "var(--font-family)", fontSize: 11, fontWeight: direction === opt.id ? 700 : 500,
+              fontFamily: "var(--font-family)", fontSize: 19, fontWeight: direction === opt.id ? 700 : 500,
               cursor: "pointer",
               boxShadow: direction === opt.id ? "0 1px 4px rgba(0,0,0,0.08)" : "none",
             }}
@@ -725,19 +725,19 @@ function FlashcardStudy() {
           boxShadow: "var(--shadow-md)",
         }}
       >
-        <div style={{ fontSize: 10, fontWeight: 700, color: flipped ? color : "var(--color-text-light)", marginBottom: 12, letterSpacing: "0.08em" }}>
+        <div style={{ fontSize: 20, fontWeight: 700, color: flipped ? color : "var(--color-text-light)", marginBottom: 12, letterSpacing: "0.08em" }}>
           {flipped ? backLabel : frontLabel}
         </div>
         <div style={{ fontSize: flipped ? 22 : 15, fontWeight: 700, lineHeight: 1.6, color: "var(--color-text)" }}>
           {flipped ? back : front}
         </div>
         {!flipped && (
-          <div style={{ fontSize: 11, color: "var(--color-text-light)", marginTop: 16 }}>
+          <div style={{ fontSize: 19, color: "var(--color-text-light)", marginTop: 16 }}>
             タップして答えを確認
           </div>
         )}
         {flipped && card.importance === "高" && (
-          <div style={{ marginTop: 12, fontSize: 11, fontWeight: 700, color: "var(--color-warning)", background: "var(--color-warning)20", padding: "3px 10px", borderRadius: 999 }}>
+          <div style={{ marginTop: 12, fontSize: 19, fontWeight: 700, color: "var(--color-warning)", background: "var(--color-warning)20", padding: "3px 10px", borderRadius: 999 }}>
             ★ 重要度：高
           </div>
         )}
@@ -751,7 +751,7 @@ function FlashcardStudy() {
           style={{
             flex: 1, padding: "13px", borderRadius: 12,
             border: "1px solid var(--color-border)", background: "#fff",
-            fontFamily: "var(--font-family)", fontSize: 13, fontWeight: 600,
+            fontFamily: "var(--font-family)", fontSize: 19, fontWeight: 600,
             cursor: cardIndex === 0 ? "default" : "pointer",
             color: "var(--color-text-light)", opacity: cardIndex === 0 ? 0.4 : 1,
             display: "flex", alignItems: "center", justifyContent: "center", gap: 6,
@@ -764,7 +764,7 @@ function FlashcardStudy() {
           style={{
             flex: 2, padding: "13px", borderRadius: 12,
             border: "none", background: color,
-            fontFamily: "var(--font-family)", fontSize: 13, fontWeight: 700,
+            fontFamily: "var(--font-family)", fontSize: 19, fontWeight: 700,
             cursor: "pointer", color: "#fff",
             display: "flex", alignItems: "center", justifyContent: "center", gap: 6,
           }}
@@ -821,9 +821,9 @@ export default function NihonshiTab({ appData, onUpdateData, onNavigate, navTarg
       }}>
         <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4 }}>
           <Scroll size={18} color="var(--color-accent)" />
-          <span style={{ fontSize: 15, fontWeight: 700 }}>日本史タブ</span>
+          <span style={{ fontSize: 19, fontWeight: 700 }}>日本史タブ</span>
         </div>
-        <div style={{ fontSize: 12, color: "var(--color-text-light)", lineHeight: 1.7 }}>
+        <div style={{ fontSize: 20, color: "var(--color-text-light)", lineHeight: 1.7 }}>
           旧石器〜現代まで全17時代を収録。時代別・人物図鑑・単語帳の3モードで学べます。
         </div>
       </div>

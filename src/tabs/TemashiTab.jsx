@@ -39,14 +39,14 @@ function ProgressSummary({ progress }) {
     }}>
       <Crown size={16} color="var(--color-warning)" />
       <div style={{ flex: 1 }}>
-        <div style={{ fontSize: 11, color: "var(--color-text-light)", marginBottom: 3 }}>
+        <div style={{ fontSize: 19, color: "var(--color-text-light)", marginBottom: 3 }}>
           テーマ史 進捗: {done}/{total} テーマ
         </div>
         <div style={{ height: 6, borderRadius: 999, background: "var(--color-border)", overflow: "hidden" }}>
           <div style={{ height: "100%", width: `${pct}%`, background: "var(--color-warning)", borderRadius: 999, transition: "width 0.5s" }} />
         </div>
       </div>
-      <span style={{ fontSize: 12, fontWeight: 700, color: "var(--color-warning)" }}>{pct}%</span>
+      <span style={{ fontSize: 20, fontWeight: 700, color: "var(--color-warning)" }}>{pct}%</span>
     </div>
   );
 }
@@ -96,11 +96,11 @@ function ThemeGrid({ progress, onSelect }) {
             </div>
 
             {/* ラベル */}
-            <div style={{ fontSize: 13, fontWeight: 700, marginBottom: 4, color: "var(--color-text)" }}>
+            <div style={{ fontSize: 19, fontWeight: 700, marginBottom: 4, color: "var(--color-text)" }}>
               {theme.label}
             </div>
             <div style={{
-              fontSize: 10, color: "var(--color-text-light)",
+              fontSize: 20, color: "var(--color-text-light)",
               lineHeight: 1.5, marginBottom: 10, flex: 1,
             }}>
               {theme.description}
@@ -109,14 +109,14 @@ function ThemeGrid({ progress, onSelect }) {
             {/* バッジ */}
             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
               <span style={{
-                fontSize: 10, fontWeight: 600,
+                fontSize: 20, fontWeight: 600,
                 color: theme.color,
                 background: theme.color + "20",
                 padding: "2px 8px", borderRadius: 999,
               }}>
                 {theme.sections?.length || 0} セクション
               </span>
-              <span style={{ fontSize: 10, color: "var(--color-text-light)" }}>
+              <span style={{ fontSize: 20, color: "var(--color-text-light)" }}>
                 {quizCount}問
               </span>
             </div>
@@ -143,14 +143,14 @@ function SectionContent({ content, color }) {
           }}
         >
           <div style={{
-            fontSize: 12, fontWeight: 700,
+            fontSize: 20, fontWeight: 700,
             color, marginBottom: 4,
             display: "flex", alignItems: "center", gap: 6,
           }}>
             <div style={{ width: 6, height: 6, borderRadius: "50%", background: color, flexShrink: 0 }} />
             {era}
           </div>
-          <div style={{ fontSize: 12, color: "var(--color-text)", lineHeight: 1.7, paddingLeft: 12 }}>
+          <div style={{ fontSize: 20, color: "var(--color-text)", lineHeight: 1.7, paddingLeft: 12 }}>
             {features}
           </div>
         </div>
@@ -199,7 +199,7 @@ function ThemeDetail({ themeId, appData, onUpdateData, onBack }) {
       <div className="fade-in">
         <button
           onClick={() => setShowQuiz(false)}
-          style={{ background: "none", border: "none", cursor: "pointer", color: theme.color, fontFamily: "var(--font-family)", fontSize: 13, fontWeight: 600, display: "flex", alignItems: "center", gap: 5, marginBottom: 16, padding: 0 }}
+          style={{ background: "none", border: "none", cursor: "pointer", color: theme.color, fontFamily: "var(--font-family)", fontSize: 19, fontWeight: 600, display: "flex", alignItems: "center", gap: 5, marginBottom: 16, padding: 0 }}
         >
           <ChevronLeft size={16} />{theme.label}に戻る
         </button>
@@ -213,7 +213,7 @@ function ThemeDetail({ themeId, appData, onUpdateData, onBack }) {
       {/* 戻るボタン */}
       <button
         onClick={onBack}
-        style={{ background: "none", border: "none", cursor: "pointer", color: "var(--color-text-light)", fontFamily: "var(--font-family)", fontSize: 13, fontWeight: 600, display: "flex", alignItems: "center", gap: 5, marginBottom: 14, padding: 0 }}
+        style={{ background: "none", border: "none", cursor: "pointer", color: "var(--color-text-light)", fontFamily: "var(--font-family)", fontSize: 19, fontWeight: 600, display: "flex", alignItems: "center", gap: 5, marginBottom: 14, padding: 0 }}
       >
         <ChevronLeft size={16} />テーマ一覧に戻る
       </button>
@@ -236,11 +236,11 @@ function ThemeDetail({ themeId, appData, onUpdateData, onBack }) {
             </div>
             <div>
               <div style={{ fontSize: 20, fontWeight: 700, marginBottom: 2 }}>{theme.label}</div>
-              <div style={{ fontSize: 12, color: "var(--color-text-light)" }}>{theme.description}</div>
+              <div style={{ fontSize: 20, color: "var(--color-text-light)" }}>{theme.description}</div>
             </div>
           </div>
           {done && (
-            <div style={{ fontSize: 13, fontWeight: 700, color: "var(--color-accent)", flexShrink: 0 }}>
+            <div style={{ fontSize: 19, fontWeight: 700, color: "var(--color-accent)", flexShrink: 0 }}>
               ✓ 完了
             </div>
           )}
@@ -283,11 +283,11 @@ function ThemeDetail({ themeId, appData, onUpdateData, onBack }) {
               }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
                   <Clock size={12} color="var(--color-text-light)" />
-                  <span style={{ fontSize: 12, color: "var(--color-text-light)" }}>{h.date}</span>
+                  <span style={{ fontSize: 20, color: "var(--color-text-light)" }}>{h.date}</span>
                 </div>
                 <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                  <span style={{ fontSize: 13, fontWeight: 600 }}>{h.score}/{h.total}</span>
-                  <span style={{ fontSize: 11, fontWeight: 700, color: gradeColor, background: gradeColor + "20", padding: "2px 8px", borderRadius: 999 }}>{grade}</span>
+                  <span style={{ fontSize: 19, fontWeight: 600 }}>{h.score}/{h.total}</span>
+                  <span style={{ fontSize: 19, fontWeight: 700, color: gradeColor, background: gradeColor + "20", padding: "2px 8px", borderRadius: 999 }}>{grade}</span>
                 </div>
               </div>
             );
@@ -301,10 +301,10 @@ function ThemeDetail({ themeId, appData, onUpdateData, onBack }) {
         border: "1px solid var(--color-border)",
         padding: "16px", textAlign: "center", marginTop: 4,
       }}>
-        <div style={{ fontSize: 14, fontWeight: 700, marginBottom: 6 }}>
+        <div style={{ fontSize: 20, fontWeight: 700, marginBottom: 6 }}>
           {theme.label} 理解度テスト
         </div>
-        <div style={{ fontSize: 12, color: "var(--color-text-light)", marginBottom: 12 }}>
+        <div style={{ fontSize: 20, color: "var(--color-text-light)", marginBottom: 12 }}>
           {quizzes.length > 0 ? `${quizzes.length}問 / 60%以上で完了チェック` : "テスト問題を準備中です"}
         </div>
         <button
@@ -315,7 +315,7 @@ function ThemeDetail({ themeId, appData, onUpdateData, onBack }) {
             borderRadius: 12, border: "none",
             background: quizzes.length > 0 ? theme.color : "var(--color-border)",
             color: "#fff",
-            fontFamily: "var(--font-family)", fontSize: 14, fontWeight: 700,
+            fontFamily: "var(--font-family)", fontSize: 20, fontWeight: 700,
             cursor: quizzes.length > 0 ? "pointer" : "default",
             opacity: quizzes.length > 0 ? 1 : 0.6,
           }}
@@ -341,7 +341,7 @@ function ThemePager({ themeId, onSelect }) {
       {prevId ? (
         <button
           onClick={() => onSelect(prevId)}
-          style={{ flex: 1, display: "flex", alignItems: "center", gap: 6, padding: "10px 12px", borderRadius: 10, border: "1px solid var(--color-border)", background: "#fff", cursor: "pointer", fontFamily: "var(--font-family)", fontSize: 12, fontWeight: 600, color: "var(--color-text)" }}
+          style={{ flex: 1, display: "flex", alignItems: "center", gap: 6, padding: "10px 12px", borderRadius: 10, border: "1px solid var(--color-border)", background: "#fff", cursor: "pointer", fontFamily: "var(--font-family)", fontSize: 20, fontWeight: 600, color: "var(--color-text)" }}
         >
           <ChevronLeft size={14} />
           <span>{temashiData[prevId]?.label}</span>
@@ -350,7 +350,7 @@ function ThemePager({ themeId, onSelect }) {
       {nextId && (
         <button
           onClick={() => onSelect(nextId)}
-          style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "flex-end", gap: 6, padding: "10px 12px", borderRadius: 10, border: "1px solid var(--color-border)", background: "#fff", cursor: "pointer", fontFamily: "var(--font-family)", fontSize: 12, fontWeight: 600, color: "var(--color-text)" }}
+          style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "flex-end", gap: 6, padding: "10px 12px", borderRadius: 10, border: "1px solid var(--color-border)", background: "#fff", cursor: "pointer", fontFamily: "var(--font-family)", fontSize: 20, fontWeight: 600, color: "var(--color-text)" }}
         >
           <span>{temashiData[nextId]?.label}</span>
           <ChevronRight size={14} />
@@ -396,9 +396,9 @@ export default function TemashiTab({ appData, onUpdateData, onNavigate }) {
       }}>
         <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4 }}>
           <Crown size={18} color="var(--color-warning)" />
-          <span style={{ fontSize: 15, fontWeight: 700 }}>テーマ史タブ</span>
+          <span style={{ fontSize: 19, fontWeight: 700 }}>テーマ史タブ</span>
         </div>
-        <div style={{ fontSize: 12, color: "var(--color-text-light)", lineHeight: 1.7 }}>
+        <div style={{ fontSize: 20, color: "var(--color-text-light)", lineHeight: 1.7 }}>
           文化・宗教・経済・外交・社会・科学技術の6テーマで、時代を横断して学べます。
         </div>
       </div>

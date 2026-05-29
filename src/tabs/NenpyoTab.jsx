@@ -257,10 +257,10 @@ export default function NenpyoTab({ onNavigate }) {
       <div style={{ padding: "0 16px 12px", display: "flex", alignItems: "center", gap: 8 }}>
         <CalendarDays size={20} color="var(--color-primary)" />
         <div>
-          <div style={{ fontSize: 17, fontWeight: 800, color: "var(--color-text)" }}>
+          <div style={{ fontSize: 19, fontWeight: 800, color: "var(--color-text)" }}>
             日本史・世界史 対照年表
           </div>
-          <div style={{ fontSize: 11, color: "var(--color-text-light)", marginTop: 2 }}>
+          <div style={{ fontSize: 14, color: "var(--color-text-light)", marginTop: 2 }}>
             上段：日本史　下段：世界史　　★ = 試験頻出
           </div>
         </div>
@@ -281,7 +281,7 @@ export default function NenpyoTab({ onNavigate }) {
             style={{
               flexShrink: 0,
               padding: "5px 10px",
-              fontSize: 11,
+              fontSize: 13,
               fontWeight: 700,
               background: era.color,
               border: "1px solid rgba(0,0,0,0.12)",
@@ -302,7 +302,7 @@ export default function NenpyoTab({ onNavigate }) {
         display: "flex",
         gap: 16,
         padding: "0 16px 10px",
-        fontSize: 11,
+        fontSize: 14,
         color: "var(--color-text-light)",
       }}>
         <span>
@@ -362,7 +362,7 @@ export default function NenpyoTab({ onNavigate }) {
       {/* Footer note */}
       <div style={{
         padding: "10px 16px 0",
-        fontSize: 10.5,
+        fontSize: 13,
         color: "var(--color-text-light)",
         lineHeight: 1.6,
       }}>

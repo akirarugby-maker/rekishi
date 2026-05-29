@@ -64,7 +64,7 @@ function TimerDisplay({ timeLeft, limit }) {
   return (
     <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
       <Clock size={14} color={color} />
-      <span style={{ fontSize: 14, fontWeight: 700, color, fontVariantNumeric: "tabular-nums" }}>
+      <span style={{ fontSize: 20, fontWeight: 700, color, fontVariantNumeric: "tabular-nums" }}>
         {String(mins).padStart(2, "0")}:{String(secs).padStart(2, "0")}
       </span>
     </div>
@@ -83,7 +83,7 @@ function SetupScreen({ onStart, onBack }) {
     <div className="fade-in">
       <button
         onClick={onBack}
-        style={{ background: "none", border: "none", cursor: "pointer", fontFamily: "var(--font-family)", fontSize: 13, fontWeight: 600, color: "var(--color-text-light)", display: "flex", alignItems: "center", gap: 5, marginBottom: 16, padding: 0 }}
+        style={{ background: "none", border: "none", cursor: "pointer", fontFamily: "var(--font-family)", fontSize: 19, fontWeight: 600, color: "var(--color-text-light)", display: "flex", alignItems: "center", gap: 5, marginBottom: 16, padding: 0 }}
       >
         <ChevronLeft size={16} />ホームに戻る
       </button>
@@ -94,14 +94,14 @@ function SetupScreen({ onStart, onBack }) {
         borderRadius: 16, padding: "20px", marginBottom: 20, textAlign: "center",
       }}>
         <Award size={36} color="var(--color-primary)" style={{ marginBottom: 10 }} />
-        <div style={{ fontSize: 18, fontWeight: 700, marginBottom: 6 }}>模擬試験モード</div>
-        <div style={{ fontSize: 12, color: "var(--color-text-light)", lineHeight: 1.7 }}>
+        <div style={{ fontSize: 20, fontWeight: 700, marginBottom: 6 }}>模擬試験モード</div>
+        <div style={{ fontSize: 20, color: "var(--color-text-light)", lineHeight: 1.7 }}>
           日本史・世界史・テーマ史の問題をミックスして<br />本番形式で解答します
         </div>
       </div>
 
       {/* モード選択 */}
-      <div style={{ fontSize: 12, fontWeight: 700, color: "var(--color-text-light)", marginBottom: 10 }}>
+      <div style={{ fontSize: 20, fontWeight: 700, color: "var(--color-text-light)", marginBottom: 10 }}>
         受験モードを選択
       </div>
       {EXAM_MODES.map(m => (
@@ -118,10 +118,10 @@ function SetupScreen({ onStart, onBack }) {
           }}
         >
           <div>
-            <div style={{ fontSize: 14, fontWeight: 700, color: selectedMode === m.id ? "var(--color-primary)" : "var(--color-text)" }}>
+            <div style={{ fontSize: 20, fontWeight: 700, color: selectedMode === m.id ? "var(--color-primary)" : "var(--color-text)" }}>
               {m.label}
             </div>
-            <div style={{ fontSize: 12, color: "var(--color-text-light)", marginTop: 2 }}>{m.desc}</div>
+            <div style={{ fontSize: 20, color: "var(--color-text-light)", marginTop: 2 }}>{m.desc}</div>
           </div>
           <div style={{
             width: 20, height: 20, borderRadius: "50%",
@@ -141,14 +141,14 @@ function SetupScreen({ onStart, onBack }) {
         border: "1px solid var(--color-border)",
         padding: "12px 14px", marginBottom: 20, marginTop: 4,
       }}>
-        <div style={{ fontSize: 11, fontWeight: 700, color: "var(--color-text-light)", marginBottom: 8 }}>出題範囲（全 {ALL_QUIZZES.length} 問からランダム選択）</div>
+        <div style={{ fontSize: 19, fontWeight: 700, color: "var(--color-text-light)", marginBottom: 8 }}>出題範囲（全 {ALL_QUIZZES.length} 問からランダム選択）</div>
         <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
           {[
             { label: "日本史", count: nihonshiQuizAll.filter(q => q.type === "FOUR_CHOICE").length, color: "var(--color-accent)" },
             { label: "世界史", count: Object.values(sekaishiData).flatMap(s => s.quizzes || []).length, color: "var(--color-highlight)" },
             { label: "テーマ史", count: Object.values(temashiData).flatMap(t => t.quizzes || []).length, color: "var(--color-warning)" },
           ].map(({ label, count, color }) => (
-            <div key={label} style={{ display: "flex", alignItems: "center", gap: 4, fontSize: 11 }}>
+            <div key={label} style={{ display: "flex", alignItems: "center", gap: 4, fontSize: 19 }}>
               <div style={{ width: 8, height: 8, borderRadius: "50%", background: color }} />
               <span style={{ color: "var(--color-text-light)" }}>{label} {count}問</span>
             </div>
@@ -162,7 +162,7 @@ function SetupScreen({ onStart, onBack }) {
           width: "100%", padding: "14px",
           borderRadius: 12, border: "none",
           background: "var(--color-primary)", color: "#fff",
-          fontFamily: "var(--font-family)", fontSize: 15, fontWeight: 700,
+          fontFamily: "var(--font-family)", fontSize: 19, fontWeight: 700,
           cursor: "pointer", boxShadow: "var(--shadow-md)",
         }}
       >
@@ -210,12 +210,12 @@ function ExamScreen({ questions, mode, onComplete }) {
         display: "flex", alignItems: "center", justifyContent: "space-between",
         marginBottom: 14,
       }}>
-        <div style={{ fontSize: 13, fontWeight: 700, color: "var(--color-text-light)" }}>
+        <div style={{ fontSize: 19, fontWeight: 700, color: "var(--color-text-light)" }}>
           {currentIdx + 1} / {questions.length}問
         </div>
         <TimerDisplay timeLeft={timeLeft} limit={mode.timeLimit} />
         <span style={{
-          fontSize: 11, fontWeight: 600,
+          fontSize: 19, fontWeight: 600,
           color: "var(--color-accent)", background: "var(--color-accent)15",
           padding: "3px 10px", borderRadius: 999,
         }}>
@@ -231,7 +231,7 @@ function ExamScreen({ questions, mode, onComplete }) {
       {/* 出典バッジ */}
       <div style={{ marginBottom: 10 }}>
         <span style={{
-          fontSize: 10, fontWeight: 700,
+          fontSize: 20, fontWeight: 700,
           color: TAB_COLOR[q.sourceTab] || "var(--color-primary)",
           background: (TAB_COLOR[q.sourceTab] || "var(--color-primary)") + "20",
           padding: "2px 8px", borderRadius: 999,
@@ -245,7 +245,7 @@ function ExamScreen({ questions, mode, onComplete }) {
         background: "#fff", borderRadius: 14,
         border: "1px solid var(--color-border)",
         padding: "16px", marginBottom: 14,
-        fontSize: 14, lineHeight: 1.8, fontWeight: 500,
+        fontSize: 20, lineHeight: 1.8, fontWeight: 600,
         boxShadow: "var(--shadow-sm)",
       }}>
         {q.question}
@@ -264,7 +264,7 @@ function ExamScreen({ questions, mode, onComplete }) {
                 borderRadius: 12, border: `2px solid ${isSelected ? "var(--color-primary)" : "var(--color-border)"}`,
                 background: isSelected ? "var(--color-primary)12" : "#fff",
                 cursor: "pointer", fontFamily: "var(--font-family)",
-                fontSize: 13, fontWeight: isSelected ? 700 : 500,
+                fontSize: 19, fontWeight: isSelected ? 700 : 500,
                 color: isSelected ? "var(--color-primary)" : "var(--color-text)",
                 textAlign: "left",
                 display: "flex", alignItems: "center", gap: 12,
@@ -276,7 +276,7 @@ function ExamScreen({ questions, mode, onComplete }) {
                 border: `2px solid ${isSelected ? "var(--color-primary)" : "var(--color-border)"}`,
                 background: isSelected ? "var(--color-primary)" : "#fff",
                 display: "flex", alignItems: "center", justifyContent: "center",
-                fontSize: 11, fontWeight: 700,
+                fontSize: 19, fontWeight: 700,
                 color: isSelected ? "#fff" : "var(--color-text-light)",
               }}>
                 {["A", "B", "C", "D"][i]}
@@ -307,21 +307,21 @@ function ExamScreen({ questions, mode, onComplete }) {
         <button
           onClick={() => setCurrentIdx(i => Math.max(0, i - 1))}
           disabled={currentIdx === 0}
-          style={{ flex: 1, padding: "12px", borderRadius: 12, border: "1px solid var(--color-border)", background: "#fff", cursor: currentIdx === 0 ? "default" : "pointer", fontFamily: "var(--font-family)", fontSize: 13, fontWeight: 600, color: "var(--color-text-light)", opacity: currentIdx === 0 ? 0.4 : 1, display: "flex", alignItems: "center", justifyContent: "center", gap: 6 }}
+          style={{ flex: 1, padding: "12px", borderRadius: 12, border: "1px solid var(--color-border)", background: "#fff", cursor: currentIdx === 0 ? "default" : "pointer", fontFamily: "var(--font-family)", fontSize: 19, fontWeight: 600, color: "var(--color-text-light)", opacity: currentIdx === 0 ? 0.4 : 1, display: "flex", alignItems: "center", justifyContent: "center", gap: 6 }}
         >
           <ChevronLeft size={15} />前へ
         </button>
         {currentIdx < questions.length - 1 ? (
           <button
             onClick={() => setCurrentIdx(i => i + 1)}
-            style={{ flex: 2, padding: "12px", borderRadius: 12, border: "none", background: "var(--color-primary)", color: "#fff", fontFamily: "var(--font-family)", fontSize: 13, fontWeight: 700, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 6 }}
+            style={{ flex: 2, padding: "12px", borderRadius: 12, border: "none", background: "var(--color-primary)", color: "#fff", fontFamily: "var(--font-family)", fontSize: 19, fontWeight: 700, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 6 }}
           >
             次へ<ChevronRight size={15} />
           </button>
         ) : (
           <button
             onClick={submitExam}
-            style={{ flex: 2, padding: "12px", borderRadius: 12, border: "none", background: answered === questions.length ? "var(--color-accent)" : "var(--color-secondary)", color: "#fff", fontFamily: "var(--font-family)", fontSize: 13, fontWeight: 700, cursor: "pointer" }}
+            style={{ flex: 2, padding: "12px", borderRadius: 12, border: "none", background: answered === questions.length ? "var(--color-accent)" : "var(--color-secondary)", color: "#fff", fontFamily: "var(--font-family)", fontSize: 19, fontWeight: 700, cursor: "pointer" }}
           >
             {answered === questions.length ? "採点する" : `採点する（未解答${questions.length - answered}問）`}
           </button>
@@ -374,20 +374,20 @@ function ResultScreen({ questions, answers, mode, onUpdateData, appData, onRetry
         borderRadius: 20, padding: "28px 24px", textAlign: "center", marginBottom: 16,
         border: `1px solid ${passed ? "var(--color-accent)40" : "var(--color-warning)40"}`,
       }}>
-        <div style={{ fontSize: 13, fontWeight: 700, color: "var(--color-text-light)", marginBottom: 8 }}>
+        <div style={{ fontSize: 19, fontWeight: 700, color: "var(--color-text-light)", marginBottom: 8 }}>
           {mode.label} 結果
         </div>
         <div style={{ fontSize: 52, fontWeight: 700, color: passed ? "var(--color-accent)" : "var(--color-warning)", lineHeight: 1.1, marginBottom: 4 }}>
           {pct}<span style={{ fontSize: 24 }}>%</span>
         </div>
-        <div style={{ fontSize: 15, fontWeight: 700, marginBottom: 12 }}>
+        <div style={{ fontSize: 19, fontWeight: 700, marginBottom: 12 }}>
           {score} / {total} 問正解
         </div>
         <div style={{
           display: "inline-flex", alignItems: "center", gap: 6,
           padding: "6px 20px", borderRadius: 999,
           background: passed ? "var(--color-accent)" : "var(--color-warning)",
-          color: "#fff", fontSize: 14, fontWeight: 700,
+          color: "#fff", fontSize: 20, fontWeight: 700,
         }}>
           {passed ? <CheckCircle size={16} /> : <XCircle size={16} />}
           {passed ? "合格ライン達成！" : "要復習（60%未満）"}
@@ -396,14 +396,14 @@ function ResultScreen({ questions, answers, mode, onUpdateData, appData, onRetry
 
       {/* タブ別内訳 */}
       <div style={{ background: "#fff", borderRadius: 14, border: "1px solid var(--color-border)", padding: "14px", marginBottom: 12, boxShadow: "var(--shadow-sm)" }}>
-        <div style={{ fontSize: 13, fontWeight: 700, marginBottom: 12 }}>分野別 正解率</div>
+        <div style={{ fontSize: 19, fontWeight: 700, marginBottom: 12 }}>分野別 正解率</div>
         {Object.values(tabStats).map(({ label, color, correct, total: t }) => {
           const p = Math.round((correct / t) * 100);
           return (
             <div key={label} style={{ marginBottom: 10 }}>
               <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 4 }}>
-                <span style={{ fontSize: 12, fontWeight: 600, color }}>{label}</span>
-                <span style={{ fontSize: 12, fontWeight: 700 }}>{correct}/{t}（{p}%）</span>
+                <span style={{ fontSize: 20, fontWeight: 600, color }}>{label}</span>
+                <span style={{ fontSize: 20, fontWeight: 700 }}>{correct}/{t}（{p}%）</span>
               </div>
               <div style={{ height: 7, borderRadius: 999, background: "var(--color-border)", overflow: "hidden" }}>
                 <div style={{ height: "100%", width: `${p}%`, background: color, borderRadius: 999, transition: "width 0.8s" }} />
@@ -419,7 +419,7 @@ function ResultScreen({ questions, answers, mode, onUpdateData, appData, onRetry
         style={{
           width: "100%", padding: "12px", borderRadius: 12,
           border: "1px solid var(--color-border)", background: "#fff",
-          fontFamily: "var(--font-family)", fontSize: 13, fontWeight: 600,
+          fontFamily: "var(--font-family)", fontSize: 19, fontWeight: 600,
           color: "var(--color-text)", cursor: "pointer", marginBottom: 8,
           display: "flex", alignItems: "center", justifyContent: "center", gap: 6,
         }}
@@ -439,18 +439,18 @@ function ResultScreen({ questions, answers, mode, onUpdateData, appData, onRetry
                 border: "1px solid var(--color-warning)40",
                 padding: "12px 14px", marginBottom: 8,
               }}>
-                <div style={{ fontSize: 11, color: TAB_COLOR[q.sourceTab] || "var(--color-primary)", fontWeight: 700, marginBottom: 6 }}>
+                <div style={{ fontSize: 19, color: TAB_COLOR[q.sourceTab] || "var(--color-primary)", fontWeight: 700, marginBottom: 6 }}>
                   Q{i + 1}. {q.sourceLabel}
                 </div>
-                <div style={{ fontSize: 12, fontWeight: 600, marginBottom: 8, lineHeight: 1.6 }}>{q.question}</div>
-                <div style={{ fontSize: 11, color: "var(--color-warning)", marginBottom: 4 }}>
+                <div style={{ fontSize: 20, fontWeight: 600, marginBottom: 8, lineHeight: 1.6 }}>{q.question}</div>
+                <div style={{ fontSize: 19, color: "var(--color-warning)", marginBottom: 4 }}>
                   あなたの答え: {userAns !== undefined ? q.choices[userAns] : "未解答"}
                 </div>
-                <div style={{ fontSize: 11, color: "var(--color-accent)", fontWeight: 700, marginBottom: 6 }}>
+                <div style={{ fontSize: 19, color: "var(--color-accent)", fontWeight: 700, marginBottom: 6 }}>
                   正解: {q.choices[q.answer]}
                 </div>
                 {q.explanation && (
-                  <div style={{ fontSize: 11, color: "var(--color-text-light)", lineHeight: 1.6, background: "var(--color-card-bg)", borderRadius: 8, padding: "8px" }}>
+                  <div style={{ fontSize: 19, color: "var(--color-text-light)", lineHeight: 1.6, background: "var(--color-card-bg)", borderRadius: 8, padding: "8px" }}>
                     {q.explanation}
                   </div>
                 )}
@@ -464,13 +464,13 @@ function ResultScreen({ questions, answers, mode, onUpdateData, appData, onRetry
       <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
         <button
           onClick={onRetry}
-          style={{ width: "100%", padding: "13px", borderRadius: 12, border: "none", background: "var(--color-primary)", color: "#fff", fontFamily: "var(--font-family)", fontSize: 13, fontWeight: 700, cursor: "pointer" }}
+          style={{ width: "100%", padding: "13px", borderRadius: 12, border: "none", background: "var(--color-primary)", color: "#fff", fontFamily: "var(--font-family)", fontSize: 19, fontWeight: 700, cursor: "pointer" }}
         >
           もう一度受ける
         </button>
         <button
           onClick={onHome}
-          style={{ width: "100%", padding: "13px", borderRadius: 12, border: "1px solid var(--color-border)", background: "#fff", fontFamily: "var(--font-family)", fontSize: 13, fontWeight: 600, cursor: "pointer", color: "var(--color-text-light)" }}
+          style={{ width: "100%", padding: "13px", borderRadius: 12, border: "1px solid var(--color-border)", background: "#fff", fontFamily: "var(--font-family)", fontSize: 19, fontWeight: 600, cursor: "pointer", color: "var(--color-text-light)" }}
         >
           ホームに戻る
         </button>

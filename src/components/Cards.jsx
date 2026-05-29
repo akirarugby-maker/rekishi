@@ -28,7 +28,7 @@ const S = {
   },
 
   sectionTitle: {
-    fontSize: 15, fontWeight: 700,
+    fontSize: 19, fontWeight: 700,
     display: "flex", alignItems: "center", gap: 8,
     marginBottom: 12, color: "var(--color-text)",
   },
@@ -37,7 +37,7 @@ const S = {
     display: "inline-block",
     padding: "2px 10px",
     borderRadius: 999,
-    fontSize: 11, fontWeight: 600,
+    fontSize: 19, fontWeight: 600,
     background: (color || "var(--color-primary)") + "20",
     color: color || "var(--color-primary)",
     margin: "3px",
@@ -57,7 +57,7 @@ const S = {
     display: "flex", alignItems: "flex-start", gap: 8,
     padding: "8px 0",
     borderBottom: "1px solid var(--color-border)",
-    fontSize: 13, lineHeight: 1.7,
+    fontSize: 19, lineHeight: 1.7,
   },
 };
 
@@ -142,10 +142,10 @@ export function EventTimeline({ events }) {
             flexShrink: 0,
           }} />
           <div>
-            <div style={{ fontSize: 11, color: "var(--color-text-light)", fontWeight: 600, marginBottom: 2 }}>
+            <div style={{ fontSize: 19, color: "var(--color-text-light)", fontWeight: 600, marginBottom: 2 }}>
               {ev.year}
             </div>
-            <div style={{ fontSize: 13, lineHeight: 1.6, color: "var(--color-text)" }}>
+            <div style={{ fontSize: 19, lineHeight: 1.6, color: "var(--color-text)" }}>
               {ev.event}
             </div>
           </div>
@@ -158,7 +158,7 @@ export function EventTimeline({ events }) {
           { level: "高", label: "重要度：高", color: "var(--color-warning)" },
           { level: "中", label: "重要度：中", color: "var(--color-secondary)" },
         ].map(({ label, color }) => (
-          <div key={label} style={{ display: "flex", alignItems: "center", gap: 5, fontSize: 11, color: "var(--color-text-light)" }}>
+          <div key={label} style={{ display: "flex", alignItems: "center", gap: 5, fontSize: 19, color: "var(--color-text-light)" }}>
             <div style={{ width: 8, height: 8, borderRadius: "50%", background: color }} />
             {label}
           </div>
@@ -220,9 +220,9 @@ export function FigureCard({ name, figure }) {
           <User size={18} color="var(--color-primary)" />
         </div>
         <div style={{ flex: 1 }}>
-          <div style={{ fontSize: 14, fontWeight: 700 }}>{name}</div>
+          <div style={{ fontSize: 20, fontWeight: 700 }}>{name}</div>
           {figure.born && (
-            <div style={{ fontSize: 11, color: "var(--color-text-light)" }}>
+            <div style={{ fontSize: 19, color: "var(--color-text-light)" }}>
               {figure.born}〜{figure.died || ""}
             </div>
           )}
@@ -233,9 +233,9 @@ export function FigureCard({ name, figure }) {
       {open && (
         <div style={{ padding: "0 14px 12px", borderTop: "1px solid var(--color-border)" }} className="fade-in">
           <div style={{ marginTop: 10 }}>
-            <div style={{ fontSize: 12, fontWeight: 700, color: "var(--color-primary)", marginBottom: 6 }}>主な業績</div>
+            <div style={{ fontSize: 20, fontWeight: 700, color: "var(--color-primary)", marginBottom: 6 }}>主な業績</div>
             {figure.achievements?.map((a, i) => (
-              <div key={i} style={{ display: "flex", gap: 6, fontSize: 13, marginBottom: 4, alignItems: "flex-start" }}>
+              <div key={i} style={{ display: "flex", gap: 6, fontSize: 19, marginBottom: 4, alignItems: "flex-start" }}>
                 <span style={{ color: "var(--color-accent)", marginTop: 2 }}>•</span>
                 <span>{a}</span>
               </div>
@@ -243,9 +243,9 @@ export function FigureCard({ name, figure }) {
           </div>
           {figure.examTips?.length > 0 && (
             <div style={{ marginTop: 10 }}>
-              <div style={{ fontSize: 12, fontWeight: 700, color: "var(--color-secondary)", marginBottom: 6 }}>試験のポイント</div>
+              <div style={{ fontSize: 20, fontWeight: 700, color: "var(--color-secondary)", marginBottom: 6 }}>試験のポイント</div>
               {figure.examTips.map((t, i) => (
-                <div key={i} style={{ display: "flex", gap: 6, fontSize: 12, marginBottom: 4, color: "var(--color-text-light)" }}>
+                <div key={i} style={{ display: "flex", gap: 6, fontSize: 20, marginBottom: 4, color: "var(--color-text-light)" }}>
                   <span style={{ color: "var(--color-secondary)" }}>★</span>
                   <span>{t}</span>
                 </div>
@@ -270,7 +270,7 @@ export function ProgressSection({ sectionKey, progressKey, label, checked, onChe
         display: "flex", alignItems: "center", justifyContent: "space-between",
         marginBottom: 8,
       }}>
-        <div style={{ fontSize: 13, fontWeight: 600, color: "var(--color-text-light)" }}>
+        <div style={{ fontSize: 19, fontWeight: 600, color: "var(--color-text-light)" }}>
           {label}
         </div>
         <button
@@ -283,7 +283,7 @@ export function ProgressSection({ sectionKey, progressKey, label, checked, onChe
             background: checked ? "var(--color-accent)18" : "#fff",
             color: checked ? "var(--color-accent)" : "var(--color-text-light)",
             fontFamily: "var(--font-family)",
-            fontSize: 12, fontWeight: 600,
+            fontSize: 20, fontWeight: 600,
             cursor: "pointer",
             transition: "all 0.2s",
           }}
@@ -304,14 +304,14 @@ export function ProgressSection({ sectionKey, progressKey, label, checked, onChe
 
 export function InfoTable({ rows }) {
   return (
-    <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 13, lineHeight: 1.8 }}>
+    <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 19, lineHeight: 1.8 }}>
       <tbody>
         {rows.map(([k, v], i) => (
           <tr key={i} style={{ borderBottom: i < rows.length - 1 ? "1px solid var(--color-border)" : "none" }}>
             <td style={{ color: "var(--color-text-light)", paddingRight: 10, width: "38%", paddingTop: 4, paddingBottom: 4, verticalAlign: "top" }}>
               {k}
             </td>
-            <td style={{ fontWeight: 500, paddingTop: 4, paddingBottom: 4 }}>{v}</td>
+            <td style={{ fontWeight: 600, paddingTop: 4, paddingBottom: 4 }}>{v}</td>
           </tr>
         ))}
       </tbody>
@@ -332,16 +332,16 @@ export function EraCard({ era, color, onStartQuiz }) {
       {/* ヘッダー */}
       <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", marginBottom: 8 }}>
         <div>
-          <div style={{ fontSize: 17, fontWeight: 700 }}>{era.name}</div>
-          <div style={{ fontSize: 12, color: "var(--color-text-light)", marginTop: 2 }}>{era.period}</div>
+          <div style={{ fontSize: 19, fontWeight: 700 }}>{era.name}</div>
+          <div style={{ fontSize: 20, color: "var(--color-text-light)", marginTop: 2 }}>{era.period}</div>
         </div>
-        <div style={{ fontSize: 13, color: difficultyColor, fontWeight: 700, flexShrink: 0 }}>
+        <div style={{ fontSize: 19, color: difficultyColor, fontWeight: 700, flexShrink: 0 }}>
           {difficultyLabel}
         </div>
       </div>
 
       {/* 文化 */}
-      <div style={{ fontSize: 12, color: "var(--color-text-light)", marginBottom: 10, fontStyle: "italic" }}>
+      <div style={{ fontSize: 20, color: "var(--color-text-light)", marginBottom: 10, fontStyle: "italic" }}>
         {era.culture}
       </div>
 
@@ -359,7 +359,7 @@ export function EraCard({ era, color, onStartQuiz }) {
             background: (color || "var(--color-primary)") + "18",
             color: color || "var(--color-primary)",
             fontFamily: "var(--font-family)",
-            fontSize: 13, fontWeight: 700,
+            fontSize: 19, fontWeight: 700,
             cursor: "pointer",
           }}
         >
@@ -380,7 +380,7 @@ export function DifficultyBadge({ level }) {
   return (
     <span style={{
       ...S.badge(colors[level]),
-      fontSize: 10,
+      fontSize: 20,
     }}>
       {labels[level]}
     </span>
@@ -410,7 +410,7 @@ export function YouTubeSearchButton({ query }) {
         border: "1.5px solid #FF000035",
         borderRadius: 10,
         color: "#CC0000",
-        fontSize: 13,
+        fontSize: 19,
         fontWeight: 700,
         textDecoration: "none",
         fontFamily: "var(--font-family)",

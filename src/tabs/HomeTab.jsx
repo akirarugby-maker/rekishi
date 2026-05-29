@@ -137,13 +137,13 @@ const S = {
     boxShadow: "var(--shadow-sm)",
   },
   cardTitle: {
-    fontSize: 14, fontWeight: 700,
+    fontSize: 20, fontWeight: 700,
     display: "flex", alignItems: "center", gap: 6,
     marginBottom: 10,
   },
   badge: (color) => ({
     display: "inline-block", padding: "2px 10px",
-    borderRadius: 999, fontSize: 11, fontWeight: 600,
+    borderRadius: 999, fontSize: 19, fontWeight: 600,
     background: color + "22", color,
   }),
   progressWrap: {
@@ -232,7 +232,7 @@ function SearchBar({ onNavigate }) {
           placeholder="人物・事件・年号・キーワードで検索..."
           style={{
             flex: 1, border: "none", outline: "none",
-            fontFamily: "var(--font-family)", fontSize: 14,
+            fontFamily: "var(--font-family)", fontSize: 20,
             color: "var(--color-text)", background: "transparent",
           }}
         />
@@ -271,8 +271,8 @@ function SearchBar({ onNavigate }) {
             >
               <span style={S.badge(typeColor[item.type] || "var(--color-primary)")}>{item.type}</span>
               <div style={{ flex: 1 }}>
-                <div style={{ fontSize: 13, fontWeight: 600 }}>{item.label}</div>
-                {item.sub && <div style={{ fontSize: 11, color: "var(--color-text-light)" }}>{item.sub}</div>}
+                <div style={{ fontSize: 19, fontWeight: 600 }}>{item.label}</div>
+                {item.sub && <div style={{ fontSize: 19, color: "var(--color-text-light)" }}>{item.sub}</div>}
               </div>
               <ChevronRight size={13} color="var(--color-text-light)" />
             </button>
@@ -317,10 +317,10 @@ function ProgressTable({ appData, onToggle, onNavigate }) {
               }}
             >
               <Icon size={15} color={section.color} />
-              <span style={{ flex: 1, fontSize: 13, fontWeight: 700, textAlign: "left" }}>
+              <span style={{ flex: 1, fontSize: 19, fontWeight: 700, textAlign: "left" }}>
                 {section.label}
               </span>
-              <span style={{ fontSize: 12, fontWeight: 600, color: section.color }}>
+              <span style={{ fontSize: 20, fontWeight: 600, color: section.color }}>
                 {done}/{total}
               </span>
               <div style={{ width: 50 }}>
@@ -328,7 +328,7 @@ function ProgressTable({ appData, onToggle, onNavigate }) {
                   <div style={S.progressFill(pct, section.color)} />
                 </div>
               </div>
-              <span style={{ fontSize: 11, color: "var(--color-text-light)" }}>
+              <span style={{ fontSize: 19, color: "var(--color-text-light)" }}>
                 {expanded ? "▲" : "▼"}
               </span>
             </button>
@@ -362,7 +362,7 @@ function ProgressTable({ appData, onToggle, onNavigate }) {
                       <div style={S.checkBox(checked, section.color)}>
                         {checked && <Check size={11} color="#fff" />}
                       </div>
-                      <span style={{ fontSize: 13, flex: 1, color: checked ? "var(--color-text-light)" : "var(--color-text)", textDecoration: checked ? "line-through" : "none" }}>
+                      <span style={{ fontSize: 19, flex: 1, color: checked ? "var(--color-text-light)" : "var(--color-text)", textDecoration: checked ? "line-through" : "none" }}>
                         {item.label}
                       </span>
                       <button
@@ -450,7 +450,7 @@ export default function HomeTab({ appData, onUpdateData, onNavigate }) {
           <Award size={16} color="var(--color-secondary)" />
           歴史能力検定 試験概要
         </div>
-        <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 12, lineHeight: 1.9 }}>
+        <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 20, lineHeight: 1.9 }}>
           <tbody>
             {[
               ["主催",       "歴史能力検定協会（1996年設立）"],
@@ -462,7 +462,7 @@ export default function HomeTab({ appData, onUpdateData, onNavigate }) {
             ].map(([k, v], i, arr) => (
               <tr key={k} style={{ borderBottom: i < arr.length - 1 ? "1px solid var(--color-border)" : "none" }}>
                 <td style={{ color: "var(--color-text-light)", paddingRight: 8, width: "35%", paddingTop: 3, paddingBottom: 3, verticalAlign: "top" }}>{k}</td>
-                <td style={{ fontWeight: 500, paddingTop: 3, paddingBottom: 3 }}>{v}</td>
+                <td style={{ fontWeight: 600, paddingTop: 3, paddingBottom: 3 }}>{v}</td>
               </tr>
             ))}
           </tbody>
@@ -484,7 +484,7 @@ export default function HomeTab({ appData, onUpdateData, onNavigate }) {
               flex: 1, padding: "9px 12px",
               borderRadius: 10,
               border: "1px solid var(--color-border)",
-              fontFamily: "var(--font-family)", fontSize: 13,
+              fontFamily: "var(--font-family)", fontSize: 19,
               outline: "none", color: "var(--color-text)",
             }}
           />
@@ -493,7 +493,7 @@ export default function HomeTab({ appData, onUpdateData, onNavigate }) {
               padding: "9px 16px", borderRadius: 10,
               background: countdownColor + "18",
               color: countdownColor,
-              fontWeight: 700, fontSize: 15,
+              fontWeight: 700, fontSize: 19,
               whiteSpace: "nowrap",
               border: `1px solid ${countdownColor}30`,
             }}>
@@ -503,7 +503,7 @@ export default function HomeTab({ appData, onUpdateData, onNavigate }) {
         </div>
         {daysLeft !== null && daysLeft > 0 && (
           <div style={{
-            marginTop: 10, fontSize: 12,
+            marginTop: 10, fontSize: 20,
             color: "var(--color-text-light)",
             display: "flex", gap: 16,
           }}>
@@ -525,7 +525,7 @@ export default function HomeTab({ appData, onUpdateData, onNavigate }) {
           </div>
           <span style={S.badge("var(--color-primary)")}>{totalPct}% 完了</span>
         </div>
-        <div style={{ fontSize: 12, color: "var(--color-text-light)", marginBottom: 6 }}>
+        <div style={{ fontSize: 20, color: "var(--color-text-light)", marginBottom: 6 }}>
           {totalDone} / {totalAll} セクション完了
         </div>
         <div style={S.progressWrap}>
@@ -541,7 +541,7 @@ export default function HomeTab({ appData, onUpdateData, onNavigate }) {
             const pct = total ? Math.round((done / total) * 100) : 0;
             return (
               <div key={section.tab}>
-                <div style={{ display: "flex", justifyContent: "space-between", fontSize: 12, marginBottom: 3 }}>
+                <div style={{ display: "flex", justifyContent: "space-between", fontSize: 20, marginBottom: 3 }}>
                   <span style={{ color: "var(--color-text-light)" }}>{section.label}</span>
                   <span style={{ fontWeight: 600, color: section.color }}>{done}/{total}</span>
                 </div>
@@ -571,10 +571,10 @@ export default function HomeTab({ appData, onUpdateData, onNavigate }) {
       >
         <Award size={24} color="var(--color-secondary)" style={{ flexShrink: 0 }} />
         <div style={{ flex: 1 }}>
-          <div style={{ fontSize: 14, fontWeight: 700, color: "var(--color-text)", marginBottom: 2 }}>
+          <div style={{ fontSize: 20, fontWeight: 700, color: "var(--color-text)", marginBottom: 2 }}>
             模擬試験モード
           </div>
-          <div style={{ fontSize: 11, color: "var(--color-text-light)" }}>
+          <div style={{ fontSize: 19, color: "var(--color-text-light)" }}>
             準1級・1級・練習 3モード／54問からランダム出題
           </div>
         </div>
@@ -596,7 +596,7 @@ export default function HomeTab({ appData, onUpdateData, onNavigate }) {
               border: "1px solid var(--color-border)",
               background: "#fff", cursor: "pointer",
               fontFamily: "var(--font-family)",
-              fontSize: 11, fontWeight: 600,
+              fontSize: 19, fontWeight: 600,
               color: "var(--color-text-light)",
             }}
           >
@@ -624,10 +624,10 @@ export default function HomeTab({ appData, onUpdateData, onNavigate }) {
             padding: "24px 20px", maxWidth: 320, width: "100%",
             boxShadow: "var(--shadow-lg)",
           }} className="scale-in">
-            <div style={{ fontSize: 16, fontWeight: 700, marginBottom: 8 }}>
+            <div style={{ fontSize: 20, fontWeight: 700, marginBottom: 8 }}>
               進捗をリセットしますか？
             </div>
-            <div style={{ fontSize: 13, color: "var(--color-text-light)", marginBottom: 20, lineHeight: 1.7 }}>
+            <div style={{ fontSize: 19, color: "var(--color-text-light)", marginBottom: 20, lineHeight: 1.7 }}>
               すべてのチェック・テスト履歴・復習ステータスが削除されます。この操作は元に戻せません。
             </div>
             <div style={{ display: "flex", gap: 10 }}>
@@ -638,7 +638,7 @@ export default function HomeTab({ appData, onUpdateData, onNavigate }) {
                   border: "1px solid var(--color-border)",
                   background: "#fff", cursor: "pointer",
                   fontFamily: "var(--font-family)",
-                  fontSize: 14, fontWeight: 600,
+                  fontSize: 20, fontWeight: 600,
                   color: "var(--color-text)",
                 }}
               >
@@ -652,7 +652,7 @@ export default function HomeTab({ appData, onUpdateData, onNavigate }) {
                   background: "var(--color-warning)", color: "#fff",
                   cursor: "pointer",
                   fontFamily: "var(--font-family)",
-                  fontSize: 14, fontWeight: 700,
+                  fontSize: 20, fontWeight: 700,
                 }}
               >
                 リセット

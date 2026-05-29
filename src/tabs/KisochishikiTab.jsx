@@ -298,7 +298,7 @@ function Timeline({ items, label }) {
   const [selected, setSelected] = useState(null);
   return (
     <div>
-      <div style={{ fontSize: 12, fontWeight: 700, color: "var(--color-text-light)", marginBottom: 8 }}>{label}</div>
+      <div style={{ fontSize: 20, fontWeight: 700, color: "var(--color-text-light)", marginBottom: 8 }}>{label}</div>
       <div style={{
         display: "flex", overflowX: "auto",
         gap: 6, paddingBottom: 10,
@@ -319,8 +319,8 @@ function Timeline({ items, label }) {
               minWidth: 64,
             }}
           >
-            <span style={{ fontSize: 12, fontWeight: 700, color: "var(--color-text)" }}>{item.name}</span>
-            <span style={{ fontSize: 10, color: "var(--color-text-light)", marginTop: 2 }}>{item.period}</span>
+            <span style={{ fontSize: 20, fontWeight: 700, color: "var(--color-text)" }}>{item.name}</span>
+            <span style={{ fontSize: 20, color: "var(--color-text-light)", marginTop: 2 }}>{item.period}</span>
           </button>
         ))}
       </div>
@@ -330,7 +330,7 @@ function Timeline({ items, label }) {
           borderRadius: 10,
           background: selected.color + "25",
           border: `1px solid ${selected.color}60`,
-          fontSize: 13, marginTop: 4,
+          fontSize: 19, marginTop: 4,
         }} className="fade-in">
           <span style={{ fontWeight: 700 }}>{selected.name}時代</span>（{selected.period}）
         </div>
@@ -412,7 +412,7 @@ export default function KisochishikiTab({ appData, onUpdateData, onNavigate }) {
             display: "flex", alignItems: "center", gap: 6,
             background: "none", border: "none",
             color: "var(--color-primary)", cursor: "pointer",
-            fontFamily: "var(--font-family)", fontSize: 13,
+            fontFamily: "var(--font-family)", fontSize: 19,
             fontWeight: 600, marginBottom: 16, padding: 0,
           }}
         >
@@ -441,7 +441,7 @@ export default function KisochishikiTab({ appData, onUpdateData, onNavigate }) {
             display: "flex", alignItems: "center", gap: 6,
             background: "none", border: "none",
             color: sec.color, cursor: "pointer",
-            fontFamily: "var(--font-family)", fontSize: 13,
+            fontFamily: "var(--font-family)", fontSize: 19,
             fontWeight: 600, marginBottom: 14, padding: 0,
           }}
         >
@@ -478,15 +478,15 @@ export default function KisochishikiTab({ appData, onUpdateData, onNavigate }) {
           padding: "16px", textAlign: "center",
           marginTop: 8,
         }}>
-          <div style={{ fontSize: 14, fontWeight: 700, marginBottom: 6 }}>
+          <div style={{ fontSize: 20, fontWeight: 700, marginBottom: 6 }}>
             セクション {sec.key} 理解度テスト
           </div>
-          <div style={{ fontSize: 12, color: "var(--color-text-light)", marginBottom: 12 }}>
+          <div style={{ fontSize: 20, color: "var(--color-text-light)", marginBottom: 12 }}>
             {sec.quizzes.length}問 / 60%以上で完了チェック
           </div>
           {done && (
             <div style={{
-              fontSize: 12, fontWeight: 600, color: "var(--color-accent)",
+              fontSize: 20, fontWeight: 600, color: "var(--color-accent)",
               marginBottom: 10,
             }}>
               ✓ このセクションは完了済みです
@@ -499,7 +499,7 @@ export default function KisochishikiTab({ appData, onUpdateData, onNavigate }) {
               borderRadius: 12, border: "none",
               background: sec.color, color: "#fff",
               fontFamily: "var(--font-family)",
-              fontSize: 14, fontWeight: 700,
+              fontSize: 20, fontWeight: 700,
               cursor: "pointer",
             }}
           >
@@ -520,10 +520,10 @@ export default function KisochishikiTab({ appData, onUpdateData, onNavigate }) {
         borderRadius: 16, border: "1px solid var(--color-border)",
         padding: "16px", marginBottom: 14,
       }}>
-        <div style={{ fontSize: 15, fontWeight: 700, marginBottom: 4 }}>
+        <div style={{ fontSize: 19, fontWeight: 700, marginBottom: 4 }}>
           📚 基礎知識タブ
         </div>
-        <div style={{ fontSize: 12, color: "var(--color-text-light)", lineHeight: 1.7 }}>
+        <div style={{ fontSize: 20, color: "var(--color-text-light)", lineHeight: 1.7 }}>
           歴史能力検定の制度・出題傾向・学習法を4セクションで学びます。
           まずここから始めましょう！
         </div>
@@ -536,7 +536,7 @@ export default function KisochishikiTab({ appData, onUpdateData, onNavigate }) {
         padding: "12px 14px", marginBottom: 14,
         boxShadow: "var(--shadow-sm)",
       }}>
-        <div style={{ fontSize: 12, color: "var(--color-text-light)", marginBottom: 6 }}>
+        <div style={{ fontSize: 20, color: "var(--color-text-light)", marginBottom: 6 }}>
           進捗: {Object.values(progress).filter(Boolean).length} / {Object.values(progress).length} セクション
         </div>
         <div style={{ height: 7, borderRadius: 999, background: "var(--color-border)", overflow: "hidden" }}>
@@ -579,13 +579,13 @@ export default function KisochishikiTab({ appData, onUpdateData, onNavigate }) {
                 <Icon size={20} color={sec.color} />
               </div>
               <div style={{ flex: 1 }}>
-                <div style={{ fontSize: 14, fontWeight: 700 }}>{sec.label}</div>
-                <div style={{ fontSize: 11, color: "var(--color-text-light)", marginTop: 2 }}>
+                <div style={{ fontSize: 20, fontWeight: 700 }}>{sec.label}</div>
+                <div style={{ fontSize: 19, color: "var(--color-text-light)", marginTop: 2 }}>
                   {sec.quizzes.length}問のテスト付き
                 </div>
               </div>
               {done
-                ? <span style={{ fontSize: 12, fontWeight: 700, color: sec.color }}>✓ 完了</span>
+                ? <span style={{ fontSize: 20, fontWeight: 700, color: sec.color }}>✓ 完了</span>
                 : <ChevronRight size={16} color="var(--color-text-light)" />
               }
             </button>
@@ -633,7 +633,7 @@ function SectionAContent() {
           { label: "その他", pct: 10, color: "var(--color-border)" },
         ].map(item => (
           <div key={item.label} style={{ marginBottom: 8 }}>
-            <div style={{ display: "flex", justifyContent: "space-between", fontSize: 12, marginBottom: 3 }}>
+            <div style={{ display: "flex", justifyContent: "space-between", fontSize: 20, marginBottom: 3 }}>
               <span>{item.label}</span>
               <span style={{ fontWeight: 700, color: item.color }}>約{item.pct}%</span>
             </div>
