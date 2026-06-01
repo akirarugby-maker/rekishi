@@ -83,6 +83,7 @@ export const NIHONSHI_EVENTS = [
   { year: 1587, label: "バテレン追放令",               imp: 2, eraId: "azuchimomoyama" },
   { year: 1588, label: "刀狩令（兵農分離）",            imp: 3, eraId: "azuchimomoyama" },
   { year: 1590, label: "豊臣秀吉が天下統一",           imp: 3, eraId: "azuchimomoyama" },
+  { year: 1591, label: "豊臣秀長（小一郎）死去",       imp: 2, eraId: "azuchimomoyama" },
   { year: 1591, label: "身分統制令",                  imp: 2, eraId: "azuchimomoyama" },
   { year: 1592, label: "文禄の役（朝鮮出兵）",          imp: 2, eraId: "azuchimomoyama" },
   { year: 1600, label: "関ヶ原の戦い",                imp: 3, eraId: "azuchimomoyama" },
