@@ -237,15 +237,15 @@ export const ERA_JUMPS = [
   { label: "昭和・現代", year: 1930, color: "#FFE6E6" },
 ];
 
-// Pre-compute lane assignments (3 lanes per side)
-function assignLanes(events, numLanes = 3) {
-  const GAP = 6;
+// Pre-compute lane assignments (4 lanes per side)
+function assignLanes(events, numLanes = 4) {
+  const GAP = 8;
   const laneEnd = Array(numLanes).fill(-99999);
   return [...events]
     .sort((a, b) => a.year - b.year)
     .map(ev => {
       const cx    = yearToX(ev.year);
-      const w     = ev.imp >= 3 ? 128 : 100;
+      const w     = ev.imp >= 3 ? 155 : 125;
       const left  = cx - w / 2;
       let lane = numLanes - 1;
       for (let l = 0; l < numLanes; l++) {
@@ -256,5 +256,5 @@ function assignLanes(events, numLanes = 3) {
     });
 }
 
-export const JP_EVENTS = assignLanes(NIHONSHI_EVENTS, 3);
-export const WD_EVENTS = assignLanes(SEKAISHI_EVENTS, 3);
+export const JP_EVENTS = assignLanes(NIHONSHI_EVENTS, 4);
+export const WD_EVENTS = assignLanes(SEKAISHI_EVENTS, 4);

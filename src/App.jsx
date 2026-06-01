@@ -165,13 +165,13 @@ const S = {
   },
 
   headerTitle: {
-    fontSize: 20,
+    fontSize: 17,
     fontWeight: 700,
     letterSpacing: "0.04em",
   },
 
   headerSub: {
-    fontSize: 19,
+    fontSize: 12,
     opacity: 0.85,
     marginTop: 2,
   },
@@ -196,7 +196,7 @@ const S = {
     background: "none",
     cursor: "pointer",
     whiteSpace: "nowrap",
-    fontSize: 19,
+    fontSize: 11,
     fontFamily: "var(--font-family)",
     fontWeight: active ? 700 : 400,
     color: active ? color : "var(--color-text-light)",
@@ -222,7 +222,7 @@ const S = {
   },
 
   cardTitle: {
-    fontSize: 20,
+    fontSize: 15,
     fontWeight: 700,
     marginBottom: 10,
     display: "flex",
@@ -234,7 +234,7 @@ const S = {
     display: "inline-block",
     padding: "2px 10px",
     borderRadius: 999,
-    fontSize: 19,
+    fontSize: 12,
     fontWeight: 600,
     background: color + "22",
     color: color,
@@ -277,8 +277,8 @@ function PlaceholderTab({ tab, phaseNum }) {
         <div style={{ color: tab.color, opacity: 0.5, marginBottom: 14 }}>
           <Icon size={52} />
         </div>
-        <div style={{ fontSize: 20, fontWeight: 700, marginBottom: 8 }}>{tab.label}</div>
-        <div style={{ fontSize: 19, color: "var(--color-text-light)", lineHeight: 1.7 }}>
+        <div style={{ fontSize: 16, fontWeight: 700, marginBottom: 8 }}>{tab.label}</div>
+        <div style={{ fontSize: 13, color: "var(--color-text-light)", lineHeight: 1.7 }}>
           フェーズ {phaseNum} で実装予定
           <br />
           現在はフェーズ1（基盤構築）完了済みです。

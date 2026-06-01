@@ -8,17 +8,18 @@ import {
 } from "../data/nenpyoData.js";
 
 // ─── Layout (px from top of inner content div) ──────────────
-const C_H        = 360;
+const C_H        = 540;
 const JP_ERA_TOP = 0;
-const JP_ERA_H   = 16;
-const JP_L_TOP   = [108, 66, 24];   // lane[0]=near axis, lane[1]=mid, lane[2]=far
-const CARD_H     = 36;
-const AXIS_TOP   = 152;
-const AXIS_H     = 10;
+const JP_ERA_H   = 18;
+const CARD_H     = 50;
+const AXIS_TOP   = 240;
+const AXIS_H     = 12;
 const AXIS_CY    = AXIS_TOP + AXIS_H / 2;
-const WD_L_TOP   = [170, 212, 254]; // lane[0]=near axis
-const WD_ERA_TOP = 298;
-const WD_ERA_H   = 16;
+// 4 lanes per side — lane[0]=nearest axis, lane[3]=farthest
+const JP_L_TOP   = [182, 126, 70, 20];
+const WD_L_TOP   = [258, 318, 378, 434];
+const WD_ERA_TOP = 500;
+const WD_ERA_H   = 18;
 
 // Card colors by side
 const JP_COLOR   = "#B5451B";
@@ -185,14 +186,14 @@ function EventCard({ ev, side, onNavigate }) {
           borderLeft: `3px solid ${ev.imp >= 3 ? color : color + "80"}`,
           borderRadius: "0 6px 6px 0",
           padding: "0 5px 0 4px",
-          fontSize: ev.imp >= 3 ? 10 : 9.5,
+          fontSize: ev.imp >= 3 ? 12 : 11,
           fontWeight: ev.imp >= 3 ? 700 : 500,
           color: "#333",
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          gap: 2,
-          lineHeight: 1.25,
+          gap: 3,
+          lineHeight: 1.3,
           overflow: "hidden",
           boxShadow: ev.imp >= 3 ? `0 1px 4px ${color}20` : "none",
           zIndex: 3,
@@ -203,7 +204,7 @@ function EventCard({ ev, side, onNavigate }) {
         <span style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", flex: 1 }}>
           {ev.label}
         </span>
-        <span style={{ fontSize: 8, color: `${color}cc`, flexShrink: 0, marginLeft: 2 }}>▶</span>
+        <span style={{ fontSize: 10, color: `${color}cc`, flexShrink: 0, marginLeft: 3 }}>▶</span>
       </div>
     </>
   );
@@ -257,10 +258,10 @@ export default function NenpyoTab({ onNavigate }) {
       <div style={{ padding: "0 16px 12px", display: "flex", alignItems: "center", gap: 8 }}>
         <CalendarDays size={20} color="var(--color-primary)" />
         <div>
-          <div style={{ fontSize: 19, fontWeight: 800, color: "var(--color-text)" }}>
+          <div style={{ fontSize: 16, fontWeight: 800, color: "var(--color-text)" }}>
             日本史・世界史 対照年表
           </div>
-          <div style={{ fontSize: 14, color: "var(--color-text-light)", marginTop: 2 }}>
+          <div style={{ fontSize: 12, color: "var(--color-text-light)", marginTop: 2 }}>
             上段：日本史　下段：世界史　　★ = 試験頻出
           </div>
         </div>
@@ -300,10 +301,11 @@ export default function NenpyoTab({ onNavigate }) {
       {/* Legend */}
       <div style={{
         display: "flex",
-        gap: 16,
+        gap: 12,
         padding: "0 16px 10px",
-        fontSize: 14,
+        fontSize: 12,
         color: "var(--color-text-light)",
+        flexWrap: "wrap",
       }}>
         <span>
           <span style={{ color: JP_COLOR, fontWeight: 700 }}>■</span> 日本史
